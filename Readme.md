@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Антон Стрючков](https://up.htmlacademy.ru/react/4/user/834641).
-* Наставник: Артем Макаров.
+* Наставник: [Артем Макаров](https://up.htmlacademy.ru/react/4/user/429879).
 
 ---
 
