@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Main = (props) => {
-  const {offersCount, offersNames} = props;
+  const {offersCount, offersNames, onLogoLinkButtonClick} = props;
 
   return (
     <div>
@@ -10,7 +10,7 @@ const Main = (props) => {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link header__logo-link--active">
+              <a className="header__logo-link header__logo-link--active" onClick = {onLogoLinkButtonClick}>
                 <img
                   className="header__logo"
                   src="img/logo.svg"
@@ -185,6 +185,7 @@ const Main = (props) => {
 Main.propTypes = {
   offersCount: PropTypes.number.isRequired,
   offersNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onLogoLinkButtonClick: PropTypes.func.isRequired,
 };
 
 export default Main;
