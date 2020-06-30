@@ -2,14 +2,18 @@ import React from "react";
 import Main from "../main/main.jsx";
 import PropTypes from "prop-types";
 
-const App = (props) => {
+const logoLinkButtonHandler = () => {};
 
+const App = (props) => {
   const {offersCount, offersNames} = props;
 
-  return <Main
-    offersCount = {offersCount}
-    offersNames = {offersNames}
-  />;
+  return (
+    <Main
+      offersCount={offersCount}
+      offersNames={offersNames}
+      onLogoLinkButtonClick={logoLinkButtonHandler}
+    />
+  );
 };
 
 App.propTypes = {
