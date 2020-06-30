@@ -7,31 +7,29 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-const Offers = {
-  offersCount: 312,
-  offersNames: [
-    `Beautiful & luxurious apartment at great location`,
-    `Wood and stone place`,
-    `Nice, cozy, warm big bed apartment`,
-    `Canal View Prinsengracht`,
-    `Huge house with fireplace`,
-  ],
-};
+const offersCount = 312;
+const offersNames = [
+  `Beautiful & luxurious apartment at great location`,
+  `Wood and stone place`,
+  `Nice, cozy, warm big bed apartment`,
+  `Canal View Prinsengracht`,
+  `Huge house with fireplace`,
+];
 
-describe(`Main component e2e test`, () => {
+describe(`Testing Main component e2e`, () => {
   it(`Should logo link be pressed`, () => {
     const onLogoLinkButtonClick = jest.fn();
 
     const mainComponent = shallow(
         <Main
-          offersCount={Offers.offersCount}
-          offersNames={Offers.offersNames}
+          offersCount={offersCount}
+          offersNames={offersNames}
           onLogoLinkButtonClick={onLogoLinkButtonClick}
         />
     );
     const logoLinkButton = mainComponent.find(`.header__logo-link`);
 
-    logoLinkButton.props().onClick();
+    logoLinkButton.simulate(`click`);
 
     expect(onLogoLinkButtonClick.mock.calls.length).toBe(1);
   });

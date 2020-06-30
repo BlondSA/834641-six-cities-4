@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main Should Main render correctly 1`] = `
+exports[`Testing <Main/> Main have rendered correctly 1`] = `
 <div>
   <header
     className="header"
