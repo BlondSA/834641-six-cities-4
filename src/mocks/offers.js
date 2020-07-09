@@ -1,15 +1,9 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import Main from "./main.jsx";
-
-const offersCount = 312;
-
-const offers = [
+export const offers = [
   {
     id: 1,
     src: `img/apartment-01.jpg`,
     price: 120,
-    rating: 4,
+    rating: {width: `60%`},
     title: `Beautiful &amp; luxurious apartment at great location`,
     type: `Apartment`,
     isInBookmark: false,
@@ -19,7 +13,7 @@ const offers = [
     id: 2,
     src: `img/apartment-02.jpg`,
     price: 80,
-    rating: 4,
+    rating: {width: `20%`},
     title: `Wood and stone place`,
     type: `Private room`,
     isInBookmark: true,
@@ -29,7 +23,7 @@ const offers = [
     id: 3,
     src: `img/apartment-03.jpg`,
     price: 132,
-    rating: 4,
+    rating: {width: `100%`},
     title: `Canal View Prinsengracht`,
     type: `Apartment`,
     isInBookmark: false,
@@ -39,25 +33,10 @@ const offers = [
     id: 4,
     src: `img/room.jpg`,
     price: 180,
-    rating: 5,
+    rating: {width: `40%`},
     title: `Nice, cozy, warm big bed apartment`,
     type: `Apartment`,
     isInBookmark: false,
     isPremium: true,
   },
 ];
-
-describe(`Testing <Main/>`, () => {
-  it(`Main have rendered correctly`, () => {
-    const tree = renderer
-      .create(
-          <Main
-            offersCount={offersCount}
-            offers={offers}
-            onOfferTitleClick = {() => {}}
-          />
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-});
