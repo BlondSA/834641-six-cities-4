@@ -1,27 +1,28 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
+const MAX_STARS = 5;
+
 class OfferCard extends PureComponent {
   constructor(props) {
     super(props);
 
     this.id = null;
-    this.onCardHover = null;
+    this._onCardHover = this._onCardHover.bind(this);
     this._onCardHoverOn = this._onCardHoverOn.bind(this);
     this._onCardHoverOff = this._onCardHoverOff.bind(this);
   }
 
   render() {
-    const {offer, onOfferTitleClick, onCardHover} = this.props;
+    const {offer, onOfferTitleClick} = this.props;
     const {id, src, rating, price, title, type, isInBookmark, isPremium} = offer;
-    this.id = id;
-    this._onCardHover = onCardHover;
+    const ratingScale = (Math.round(rating) / MAX_STARS * 100) + `%`;
 
     return (
-      <article className="cities__place-card place-card" onMouseEnter = {this._onCardHoverOn} onMouseLeave = {this._onCardHoverOff}>
-        <div className="place-card__mark">
-          {isPremium ? <span>Premium</span> : ``}
-        </div>
+      <article id ={id} className="cities__place-card place-card" onMouseEnter = {this._onCardHoverOn} onMouseLeave = {this._onCardHoverOff}>
+        {isPremium ? <div className="place-card__mark">
+          <span>Premium</span>
+        </div> : ``}
         <div className="cities__image-wrapper place-card__image-wrapper">
           <a href="#">
             <img className="place-card__image" src={src} width="260" height="200" alt="Place image"/>
@@ -42,7 +43,7 @@ class OfferCard extends PureComponent {
           </div>
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">
-              <span style={rating}></span>
+              <span style={{width: ratingScale}}></span>
               <span className="visually-hidden">Rating</span>
             </div>
           </div>
@@ -58,12 +59,14 @@ class OfferCard extends PureComponent {
   }
 
   _onCardHoverOn() {
-    this.onCardHover(this.id);
+    this._onCardHover(this.id);
   }
 
   _onCardHoverOff() {
-    this.onCardHover(null);
+    this._onCardHover(null);
   }
+
+  _onCardHover() {}
 }
 
 OfferCard.propTypes = {
@@ -80,10 +83,6 @@ OfferCard.propTypes = {
     }),
   onCardHover: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
-};
-
-OfferCard.propTypes = {
-
 };
 
 export default OfferCard;

@@ -11,7 +11,10 @@ const Main = (props) => {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link header__logo-link--active" onClick = {onOfferTitleClick}>
+              <a
+                className="header__logo-link header__logo-link--active"
+                onClick={onOfferTitleClick}
+              >
                 <img
                   className="header__logo"
                   src="img/logo.svg"
@@ -117,8 +120,9 @@ const Main = (props) => {
                   <option className="places__option" value="top-rated">Top rated first</option>
                 </select> */}
               </form>
-              <OfferList offers = {offers}
-                onOfferTitleClick = {onOfferTitleClick}
+              <OfferList
+                offers={offers}
+                onOfferTitleClick={onOfferTitleClick}
               />
             </section>
             <div className="cities__right-section">
@@ -133,16 +137,18 @@ const Main = (props) => {
 
 Main.propTypes = {
   offersCount: PropTypes.number.isRequired,
-  offers: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    src: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    isInBookmark: PropTypes.bool.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-  })).isRequired,
+  offers: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        src: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        isInBookmark: PropTypes.bool.isRequired,
+        isPremium: PropTypes.bool.isRequired,
+      })
+  ).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
 };
 

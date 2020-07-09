@@ -47,12 +47,9 @@ const offers = [
 
 describe(`Testing <OffersList/>`, () => {
   it(`OffersList rendered correctly`, () => {
-    const tree = renderer.create(
-        <OfferList
-          offers={offers}
-          onOfferTitleClick = {() => {}}
-        />
-    ).toJSON();
+    const tree = renderer
+      .create(<OfferList offers={offers} onOfferTitleClick={() => {}} />)
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

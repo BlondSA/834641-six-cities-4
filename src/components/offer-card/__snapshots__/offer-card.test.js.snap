@@ -3,6 +3,7 @@
 exports[`Testing <OfferCard/> OffersCard rendered correctly 1`] = `
 <article
   className="cities__place-card place-card"
+  id={1}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
@@ -76,7 +77,11 @@ exports[`Testing <OfferCard/> OffersCard rendered correctly 1`] = `
         className="place-card__stars rating__stars"
       >
         <span
-          style={4}
+          style={
+            Object {
+              "width": "80%",
+            }
+          }
         />
         <span
           className="visually-hidden"

@@ -227,6 +227,7 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
           >
             <article
               className="cities__place-card place-card"
+              id={1}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
@@ -300,7 +301,11 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
                     className="place-card__stars rating__stars"
                   >
                     <span
-                      style={4}
+                      style={
+                        Object {
+                          "width": "80%",
+                        }
+                      }
                     />
                     <span
                       className="visually-hidden"
@@ -328,14 +333,11 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
             </article>
             <article
               className="cities__place-card place-card"
+              id={2}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
-              <div
-                className="place-card__mark"
-              >
-                
-              </div>
+              
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
@@ -399,7 +401,11 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
                     className="place-card__stars rating__stars"
                   >
                     <span
-                      style={4}
+                      style={
+                        Object {
+                          "width": "80%",
+                        }
+                      }
                     />
                     <span
                       className="visually-hidden"
@@ -427,14 +433,11 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
             </article>
             <article
               className="cities__place-card place-card"
+              id={3}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
-              <div
-                className="place-card__mark"
-              >
-                
-              </div>
+              
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
@@ -498,7 +501,11 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
                     className="place-card__stars rating__stars"
                   >
                     <span
-                      style={4}
+                      style={
+                        Object {
+                          "width": "80%",
+                        }
+                      }
                     />
                     <span
                       className="visually-hidden"
@@ -526,6 +533,7 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
             </article>
             <article
               className="cities__place-card place-card"
+              id={4}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
@@ -599,7 +607,11 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
                     className="place-card__stars rating__stars"
                   >
                     <span
-                      style={5}
+                      style={
+                        Object {
+                          "width": "100%",
+                        }
+                      }
                     />
                     <span
                       className="visually-hidden"

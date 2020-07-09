@@ -6,7 +6,9 @@ class OfferList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {idCard: null};
+    this.state = {
+      idCard: null,
+    };
 
     this._handleCardHover = this._handleCardHover.bind(this);
   }
@@ -18,10 +20,10 @@ class OfferList extends PureComponent {
       <div className="cities__places-list places__list tabs__content">
         {offers.map((offer) => (
           <OfferCard
-            offer = {offer}
-            onOfferTitleClick = {onOfferTitleClick}
-            onCardHover = {this._handleCardHover}
-            key = {offer.id}
+            offer={offer}
+            onOfferTitleClick={onOfferTitleClick}
+            onCardHover={this._handleCardHover}
+            key={offer.id}
           />
         ))}
       </div>
@@ -30,7 +32,7 @@ class OfferList extends PureComponent {
 
   _handleCardHover(id) {
     this.setState({
-      idCard: id
+      idCard: id,
     });
   }
 }
