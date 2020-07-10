@@ -26,7 +26,7 @@ describe(`OfferCardE2eTest`, () => {
         <OfferCard
           offer = {offer}
           onOfferTitleClick = {onOfferTitleClick}
-          onCardHover = {() => {}}
+          onMouseOver = {() => {}}
         />
     );
 

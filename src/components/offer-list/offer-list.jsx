@@ -7,10 +7,16 @@ class OfferList extends PureComponent {
     super(props);
 
     this.state = {
-      idCard: null,
+      cardId: null,
     };
 
     this._handleCardHover = this._handleCardHover.bind(this);
+  }
+
+  _handleCardHover(id) {
+    this.setState({
+      cardId: id,
+    });
   }
 
   render() {
@@ -22,18 +28,12 @@ class OfferList extends PureComponent {
           <OfferCard
             offer={offer}
             onOfferTitleClick={onOfferTitleClick}
-            onCardHover={this._handleCardHover}
+            onMouseOver={this._handleCardHover}
             key={offer.id}
           />
         ))}
       </div>
     );
-  }
-
-  _handleCardHover(id) {
-    this.setState({
-      idCard: id,
-    });
   }
 }
 

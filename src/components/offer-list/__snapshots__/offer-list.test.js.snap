@@ -6,9 +6,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
 >
   <article
     className="cities__place-card place-card"
-    id={1}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
   >
     <div
       className="place-card__mark"
@@ -112,9 +110,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
   </article>
   <article
     className="cities__place-card place-card"
-    id={2}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
   >
     
     <div
@@ -212,9 +208,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
   </article>
   <article
     className="cities__place-card place-card"
-    id={3}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
   >
     
     <div
@@ -312,9 +306,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
   </article>
   <article
     className="cities__place-card place-card"
-    id={4}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
   >
     <div
       className="place-card__mark"

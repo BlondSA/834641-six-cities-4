@@ -63,7 +63,7 @@ describe(`OfferList e2e test`, () => {
     offers.forEach((offer) => {
       const id = offer.id;
       offerList.instance()._handleCardHover(id);
-      expect(offerList.state(`idCard`)).toEqual(id);
+      expect(offerList.state(`cardId`)).toEqual(id);
     });
   });
 });
