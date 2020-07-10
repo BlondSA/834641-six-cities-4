@@ -1,8 +1,11 @@
 import React from "react";
-import renderer from "react-test-renderer";
-import Main from "./main.jsx";
+import Enzyme, {shallow} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import OfferList from "./offer-list.jsx";
 
-const offersCount = 312;
+Enzyme.configure({
+  adapter: new Adapter(),
+});
 
 const offers = [
   {
@@ -47,17 +50,20 @@ const offers = [
   },
 ];
 
-describe(`Testing <Main/>`, () => {
-  it(`Main have rendered correctly`, () => {
-    const tree = renderer
-      .create(
-          <Main
-            offersCount={offersCount}
-            offers={offers}
-            onOfferTitleClick = {() => {}}
-          />
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+
+describe(`OfferList e2e test`, () => {
+  it(`handleCardHover should offer list state id`, () => {
+    const offerList = shallow(
+        <OfferList
+          offers = {offers}
+          onCardHover = {() => {}}
+          onOfferTitleClick = {() => {}}
+        />
+    );
+    offers.forEach((offer) => {
+      const id = offer.id;
+      offerList.instance()._handleCardHover(id);
+      expect(offerList.state(`cardId`)).toEqual(id);
+    });
   });
 });

@@ -1,24 +1,37 @@
 import React from "react";
-import Main from "../main/main.jsx";
 import PropTypes from "prop-types";
+import Main from "../main/main.jsx";
 
-const logoLinkButtonHandler = () => {};
+const handleOfferTitle = (evt) => {
+  evt.preventDefault();
+};
 
 const App = (props) => {
-  const {offersCount, offersNames} = props;
+  const {offersCount, offers} = props;
 
   return (
     <Main
       offersCount={offersCount}
-      offersNames={offersNames}
-      onLogoLinkButtonClick={logoLinkButtonHandler}
+      offers={offers}
+      onOfferTitleClick={handleOfferTitle}
     />
   );
 };
 
 App.propTypes = {
   offersCount: PropTypes.number.isRequired,
-  offersNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  offers: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        src: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        isInBookmark: PropTypes.bool.isRequired,
+        isPremium: PropTypes.bool.isRequired,
+      })
+  ).isRequired,
 };
 
 export default App;
