@@ -18,7 +18,6 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
         >
           <a
             className="header__logo-link header__logo-link--active"
-            onClick={[Function]}
           >
             <img
               alt="6 cities logo"
@@ -227,7 +226,8 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
           >
             <article
               className="cities__place-card place-card"
-              onMouseOver={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 className="place-card__mark"
@@ -246,7 +246,7 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-01.jpg"
+                    src="http://picsum.photos/260/200?r=1"
                     width="260"
                   />
                 </a>
@@ -301,7 +301,7 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "80%",
+                          "width": "20%",
                         }
                       }
                     />
@@ -319,7 +319,7 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
                     href="#"
                     onClick={[Function]}
                   >
-                    Beautiful &amp; luxurious apartment at great location
+                    Beautiful & luxurious apartment at great location
                   </a>
                 </h2>
                 <p
@@ -331,7 +331,8 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
             </article>
             <article
               className="cities__place-card place-card"
-              onMouseOver={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               
               <div
@@ -344,7 +345,7 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-02.jpg"
+                    src="http://picsum.photos/260/200?r=1"
                     width="260"
                   />
                 </a>
@@ -399,7 +400,7 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "80%",
+                          "width": "40%",
                         }
                       }
                     />
@@ -429,7 +430,8 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
             </article>
             <article
               className="cities__place-card place-card"
-              onMouseOver={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               
               <div
@@ -442,7 +444,7 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-03.jpg"
+                    src="http://picsum.photos/260/200?r=1"
                     width="260"
                   />
                 </a>
@@ -497,7 +499,7 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "80%",
+                          "width": "60%",
                         }
                       }
                     />
@@ -527,7 +529,8 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
             </article>
             <article
               className="cities__place-card place-card"
-              onMouseOver={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
               <div
                 className="place-card__mark"
@@ -546,7 +549,7 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/room.jpg"
+                    src="http://picsum.photos/260/200?r=1"
                     width="260"
                   />
                 </a>
@@ -601,7 +604,7 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "100%",
+                          "width": "1800%",
                         }
                       }
                     />

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import OfferList from "../offer-list/offer-list.jsx";
+import {PLACE_TYPES} from "../../const.js";
 
 const Main = (props) => {
   const {offersCount, offers, onOfferTitleClick} = props;
@@ -11,10 +12,7 @@ const Main = (props) => {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a
-                className="header__logo-link header__logo-link--active"
-                onClick={onOfferTitleClick}
-              >
+              <a className="header__logo-link header__logo-link--active">
                 <img
                   className="header__logo"
                   src="img/logo.svg"
@@ -139,14 +137,24 @@ Main.propTypes = {
   offersCount: PropTypes.number.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
+        amenities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        bedrooms: PropTypes.number.isRequired,
+        host: PropTypes.shape({
+          descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+          hostName: PropTypes.string.isRequired,
+          isHostPro: PropTypes.bool.isRequired,
+          srcHostAvatar: PropTypes.string.isRequired
+        }).isRequired,
         id: PropTypes.number.isRequired,
-        src: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        type: PropTypes.string.isRequired,
         isInBookmark: PropTypes.bool.isRequired,
         isPremium: PropTypes.bool.isRequired,
+        maxAdults: PropTypes.number.isRequired,
+        price: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+        srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        srcPreviewImageOffer: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        type: PropTypes.oneOf(PLACE_TYPES).isRequired
       })
   ).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,

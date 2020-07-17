@@ -1,21 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-const MAX_STARS = 5;
+import {MAX_STARS, PLACE_TYPES} from "../../const.js";
 
 const OfferCard = (props) => {
-  const {offer, onOfferTitleClick, onMouseOver} = props;
-  const {id, src, rating, price, title, type, isInBookmark, isPremium} = offer;
+  const {offer, onOfferTitleClick, onMouseEnter, onMouseLeave} = props;
+  const {id, srcPreviewImageOffer, rating, price, title, type, isInBookmark, isPremium} = offer;
 
 
   return (
-    <article key ={id} className="cities__place-card place-card" onMouseOver={() => onMouseOver(offer)}>
+    <article key ={id} className="cities__place-card place-card" onMouseEnter={() => onMouseEnter(offer)} onMouseLeave={onMouseLeave}>
       {isPremium ? <div className="place-card__mark">
         <span>Premium</span>
       </div> : ``}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={src} width="260" height="200" alt="Place image"/>
+          <img className="place-card__image" src={srcPreviewImageOffer} width="260" height="200" alt="Place image"/>
         </a>
       </div>
       <div className="place-card__info">
@@ -49,19 +48,19 @@ const OfferCard = (props) => {
 };
 
 OfferCard.propTypes = {
-  offer:
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      src: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      rating: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-      isInBookmark: PropTypes.bool.isRequired,
-      isPremium: PropTypes.bool.isRequired,
-    }),
-  onMouseOver: PropTypes.func.isRequired,
-  onOfferTitleClick: PropTypes.func.isRequired,
+  offer: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    isInBookmark: PropTypes.bool.isRequired,
+    isPremium: PropTypes.bool.isRequired,
+    price: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    srcPreviewImageOffer: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(PLACE_TYPES).isRequired,
+  }).isRequired,
+  onMouseEnter: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired,
+  onOfferTitleClick: PropTypes.func.isRequired
 };
 
 export default OfferCard;
