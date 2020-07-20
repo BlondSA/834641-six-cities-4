@@ -6,7 +6,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
 >
   <article
     className="cities__place-card place-card"
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
   >
     <div
       className="place-card__mark"
@@ -25,7 +25,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
           alt="Place image"
           className="place-card__image"
           height="200"
-          src="img/apartment-01.jpg"
+          src="http://picsum.photos/260/200?r=4"
           width="260"
         />
       </a>
@@ -80,7 +80,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
           <span
             style={
               Object {
-                "width": "80%",
+                "width": "20%",
               }
             }
           />
@@ -93,12 +93,13 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
       </div>
       <h2
         className="place-card__name"
+        onClick={[Function]}
       >
         <a
+          data-id={1}
           href="#"
-          onClick={[Function]}
         >
-          Beautiful &amp; luxurious apartment at great location
+          Beautiful & luxurious apartment at great location
         </a>
       </h2>
       <p
@@ -110,7 +111,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
   </article>
   <article
     className="cities__place-card place-card"
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
   >
     
     <div
@@ -123,7 +124,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
           alt="Place image"
           className="place-card__image"
           height="200"
-          src="img/apartment-02.jpg"
+          src="http://picsum.photos/260/200?r=1"
           width="260"
         />
       </a>
@@ -178,7 +179,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
           <span
             style={
               Object {
-                "width": "80%",
+                "width": "40%",
               }
             }
           />
@@ -191,10 +192,11 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
       </div>
       <h2
         className="place-card__name"
+        onClick={[Function]}
       >
         <a
+          data-id={2}
           href="#"
-          onClick={[Function]}
         >
           Wood and stone place
         </a>
@@ -208,7 +210,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
   </article>
   <article
     className="cities__place-card place-card"
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
   >
     
     <div
@@ -221,7 +223,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
           alt="Place image"
           className="place-card__image"
           height="200"
-          src="img/apartment-03.jpg"
+          src="http://picsum.photos/260/200?r=2"
           width="260"
         />
       </a>
@@ -276,7 +278,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
           <span
             style={
               Object {
-                "width": "80%",
+                "width": "60%",
               }
             }
           />
@@ -289,10 +291,11 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
       </div>
       <h2
         className="place-card__name"
+        onClick={[Function]}
       >
         <a
+          data-id={3}
           href="#"
-          onClick={[Function]}
         >
           Canal View Prinsengracht
         </a>
@@ -306,7 +309,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
   </article>
   <article
     className="cities__place-card place-card"
-    onMouseOver={[Function]}
+    onMouseEnter={[Function]}
   >
     <div
       className="place-card__mark"
@@ -325,7 +328,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
           alt="Place image"
           className="place-card__image"
           height="200"
-          src="img/room.jpg"
+          src="http://picsum.photos/260/200?r=3"
           width="260"
         />
       </a>
@@ -380,7 +383,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
           <span
             style={
               Object {
-                "width": "100%",
+                "width": "1800%",
               }
             }
           />
@@ -393,10 +396,11 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
       </div>
       <h2
         className="place-card__name"
+        onClick={[Function]}
       >
         <a
+          data-id={4}
           href="#"
-          onClick={[Function]}
         >
           Nice, cozy, warm big bed apartment
         </a>
