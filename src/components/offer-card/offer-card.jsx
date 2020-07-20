@@ -3,18 +3,40 @@ import PropTypes from "prop-types";
 import {MAX_STARS, PLACE_TYPES} from "../../const.js";
 
 const OfferCard = (props) => {
-  const {offer, onOfferTitleClick, onMouseEnter, onMouseLeave} = props;
-  const {id, srcPreviewImageOffer, rating, price, title, type, isInBookmark, isPremium} = offer;
+  const {offer, onOfferTitleClick, onOfferCardHover} = props;
+  const {
+    id,
+    srcImageOffer,
+    rating,
+    price,
+    title,
+    type,
+    isInBookmark,
+    isPremium,
+  } = offer;
 
+  const srcPreviewImageOffer = srcImageOffer[0];
 
   return (
-    <article key ={id} className="cities__place-card place-card" onMouseEnter={() => onMouseEnter(offer)} onMouseLeave={onMouseLeave}>
-      {isPremium ? <div className="place-card__mark">
-        <span>Premium</span>
-      </div> : ``}
+    <article
+      className="cities__place-card place-card"
+      onMouseEnter={() => onOfferCardHover(offer)}>
+      {isPremium ? (
+        <div className="place-card__mark">
+          <span>Premium</span>
+        </div>
+      ) : (
+        ``
+      )}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={srcPreviewImageOffer} width="260" height="200" alt="Place image"/>
+          <img
+            className="place-card__image"
+            src={srcPreviewImageOffer}
+            width="260"
+            height="200"
+            alt="Place image"
+          />
         </a>
       </div>
       <div className="place-card__info">
@@ -23,7 +45,14 @@ const OfferCard = (props) => {
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className= {isInBookmark ? `place-card__bookmark-button place-card__bookmark-button--active button` : `place-card__bookmark-button button`} type="button">
+          <button
+            className={
+              isInBookmark
+                ? `place-card__bookmark-button place-card__bookmark-button--active button`
+                : `place-card__bookmark-button button`
+            }
+            type="button"
+          >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
@@ -32,14 +61,21 @@ const OfferCard = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${Math.round(rating) / MAX_STARS * 100}%`}}></span>
+            <span
+              style={{width: `${(Math.round(rating) / MAX_STARS) * 100}%`}}
+            ></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <h2 className="place-card__name">
-          <a href="#"
-            onClick = {onOfferTitleClick}
-          >{title}</a>
+        <h2 className="place-card__name"
+          onClick={(evt) => {
+            evt.preventDefault();
+            onOfferTitleClick(offer);
+          }}
+        >
+          <a href="#" data-id={id}>
+            {title}
+          </a>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -50,16 +86,15 @@ const OfferCard = (props) => {
 OfferCard.propTypes = {
   offer: PropTypes.shape({
     id: PropTypes.number.isRequired,
+    srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     isInBookmark: PropTypes.bool.isRequired,
     isPremium: PropTypes.bool.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
-    srcPreviewImageOffer: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     type: PropTypes.oneOf(PLACE_TYPES).isRequired,
   }).isRequired,
-  onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired,
+  onOfferCardHover: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired
 };
 

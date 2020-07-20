@@ -14,13 +14,13 @@ describe(`OfferList e2e test`, () => {
     const offerList = shallow(
         <OfferList
           offers = {offers}
-          onCardHover = {() => {}}
+          onCardEnter = {() => {}}
           onOfferTitleClick = {() => {}}
         />
     );
     offers.forEach((offer) => {
       const id = offer.id;
-      offerList.instance()._handleCardEnter(id);
+      offerList.instance().handleCardEnter(id);
       expect(offerList.state(`activeCard`)).toEqual(id);
     });
   });

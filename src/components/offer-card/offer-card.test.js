@@ -10,8 +10,7 @@ describe(`Testing <OfferCard/>`, () => {
           <OfferCard
             offer={offers[0]}
             onOfferTitleClick={() => {}}
-            onMouseEnter={() => {}}
-            onMouseLeave={() => {}}
+            onOfferCardHover={() => {}}
           />
       )
       .toJSON();

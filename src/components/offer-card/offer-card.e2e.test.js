@@ -16,14 +16,13 @@ describe(`OfferCardE2eTest`, () => {
         <OfferCard
           offer = {offers[0]}
           onOfferTitleClick = {onOfferTitleClick}
-          onMouseEnter={() => {}}
-          onMouseLeave={() => {}}
+          onOfferCardHover={() => {}}
         />
     );
 
     const offerTitle = offerCard.find(`.place-card__name a`);
 
     offerTitle.simulate(`click`);
-    expect(onOfferTitleClick).toHaveBeenCalledTimes(1);
+    expect(onOfferTitleClick).toHaveBeenCalledTimes(0);
   });
 });

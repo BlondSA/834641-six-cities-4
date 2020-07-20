@@ -4,7 +4,6 @@ exports[`Testing <OfferCard/> OffersCard rendered correctly 1`] = `
 <article
   className="cities__place-card place-card"
   onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
 >
   <div
     className="place-card__mark"
@@ -23,7 +22,7 @@ exports[`Testing <OfferCard/> OffersCard rendered correctly 1`] = `
         alt="Place image"
         className="place-card__image"
         height="200"
-        src="http://picsum.photos/260/200?r=1"
+        src="http://picsum.photos/260/200?r=4"
         width="260"
       />
     </a>
@@ -91,10 +90,11 @@ exports[`Testing <OfferCard/> OffersCard rendered correctly 1`] = `
     </div>
     <h2
       className="place-card__name"
+      onClick={[Function]}
     >
       <a
+        data-id={1}
         href="#"
-        onClick={[Function]}
       >
         Beautiful & luxurious apartment at great location
       </a>

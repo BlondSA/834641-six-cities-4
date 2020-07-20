@@ -2,23 +2,27 @@ import React from "react";
 import PropTypes from "prop-types";
 import {MAX_STARS, PLACE_TYPES} from "../../const.js";
 
-const OfferDetails = (offer) => {
+const OfferDetails = (props) => {
+  const {offer} = props;
   const {
-    amenities,
+    features,
     bedrooms,
     id,
-    isInBookmark,
-    isPremium,
+    isInBookmark = false,
+    isPremium = false,
     maxAdults,
     price,
     rating,
     srcImageOffer,
-    srcPreviewImageOffer,
     title,
     type,
-    host,
+    isHostPro = false,
+    hostName,
+    srcHostAvatar,
+    descriptionOffer,
   } = offer;
-  const {isHostPro, hostName, srcHostAvatar, descriptionOffer} = host;
+
+  const srcPreviewImageOffer = srcImageOffer[0];
 
   return (
     <div className="page">
@@ -132,10 +136,10 @@ const OfferDetails = (offer) => {
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  {amenities.map((services) => {
+                  {features.map((feature) => {
                     return (
-                      <li key={services} className="property__inside-item">
-                        {services}
+                      <li key={feature} className="property__inside-item">
+                        {feature}
                       </li>
                     );
                   })}
@@ -192,7 +196,7 @@ const OfferDetails = (offer) => {
                     <div className="reviews__info">
                       <div className="reviews__rating rating">
                         <div className="reviews__stars rating__stars">
-                          <span style="width: 80%"></span>
+                          <span style={{width: `80%`}}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -370,7 +374,7 @@ const OfferDetails = (offer) => {
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style="width: 80%"></span>
+                      <span style={{width: `80%`}}></span>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -417,7 +421,7 @@ const OfferDetails = (offer) => {
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style="width: 80%"></span>
+                      <span style={{width: `80%`}}></span>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -464,7 +468,7 @@ const OfferDetails = (offer) => {
                   </div>
                   <div className="place-card__rating rating">
                     <div className="place-card__stars rating__stars">
-                      <span style="width: 100%"></span>
+                      <span style={{width: `100%`}}></span>
                       <span className="visually-hidden">Rating</span>
                     </div>
                   </div>
@@ -484,14 +488,12 @@ const OfferDetails = (offer) => {
 
 OfferDetails.propTypes = {
   offer: PropTypes.shape({
-    amenities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    features: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     bedrooms: PropTypes.number.isRequired,
-    host: PropTypes.shape({
-      descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-      hostName: PropTypes.string.isRequired,
-      isHostPro: PropTypes.bool.isRequired,
-      srcHostAvatar: PropTypes.string.isRequired
-    }).isRequired,
+    descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    hostName: PropTypes.string.isRequired,
+    isHostPro: PropTypes.bool.isRequired,
+    srcHostAvatar: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     isInBookmark: PropTypes.bool.isRequired,
     isPremium: PropTypes.bool.isRequired,
@@ -499,10 +501,9 @@ OfferDetails.propTypes = {
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    srcPreviewImageOffer: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(PLACE_TYPES).isRequired
-  }).isRequired
+    type: PropTypes.oneOf(PLACE_TYPES).isRequired,
+  }).isRequired,
 };
 
 export default OfferDetails;

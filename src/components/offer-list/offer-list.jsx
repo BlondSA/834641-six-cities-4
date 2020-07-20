@@ -3,42 +3,36 @@ import PropTypes from "prop-types";
 import OfferCard from "../offer-card/offer-card.jsx";
 import {PLACE_TYPES} from "../../const.js";
 
-class OfferList extends PureComponent {
+export default class OfferList extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      activeCard: null,
+      activeCardId: null,
+      activeCard: {},
     };
 
-    this._handleCardEnter = this._handleCardEnter.bind(this);
-    this._handleCardLeave = this._handleCardLeave.bind(this);
+    this.handleCardEnter = this.handleCardEnter.bind(this);
   }
 
-  _handleCardEnter(offer) {
-    this.setState({
-      activeCard: offer,
-    });
-  }
-
-  _handleCardLeave() {
-    this.setState({
-      activeCard: null,
-    });
+  handleCardEnter(offer) {
+    if (offer !== this.state.activeCard) {
+      this.setState({
+        activeCard: offer,
+      });
+    }
   }
 
   render() {
     const {offers, onOfferTitleClick} = this.props;
-
     return (
       <div className="cities__places-list places__list tabs__content">
         {offers.map((offer) => (
           <OfferCard
+            key={offer.id}
             offer={offer}
             onOfferTitleClick={onOfferTitleClick}
-            onMouseEnter={this._handleCardEnter}
-            onMouseLeave={this._handleCardLeave}
-            key={offer.id}
+            onOfferCardHover={this.handleCardEnter}
           />
         ))}
       </div>
@@ -49,14 +43,13 @@ class OfferList extends PureComponent {
 OfferList.propTypes = {
   offers: PropTypes.arrayOf(
       PropTypes.shape({
-        amenities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        features: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         bedrooms: PropTypes.number.isRequired,
-        host: PropTypes.shape({
-          descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-          hostName: PropTypes.string.isRequired,
-          isHostPro: PropTypes.bool.isRequired,
-          srcHostAvatar: PropTypes.string.isRequired
-        }).isRequired,
+        descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired)
+        .isRequired,
+        hostName: PropTypes.string.isRequired,
+        isHostPro: PropTypes.bool.isRequired,
+        srcHostAvatar: PropTypes.string.isRequired,
         id: PropTypes.number.isRequired,
         isInBookmark: PropTypes.bool.isRequired,
         isPremium: PropTypes.bool.isRequired,
@@ -64,12 +57,9 @@ OfferList.propTypes = {
         price: PropTypes.number.isRequired,
         rating: PropTypes.number.isRequired,
         srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        srcPreviewImageOffer: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
-        type: PropTypes.oneOf(PLACE_TYPES).isRequired
+        type: PropTypes.oneOf(PLACE_TYPES).isRequired,
       })
   ).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
 };
-
-export default OfferList;

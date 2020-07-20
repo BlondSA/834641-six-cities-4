@@ -4,7 +4,8 @@ import OfferList from "../offer-list/offer-list.jsx";
 import {PLACE_TYPES} from "../../const.js";
 
 const Main = (props) => {
-  const {offersCount, offers, onOfferTitleClick} = props;
+  const {offers, onOfferTitleClick} = props;
+  const offersCount = offers.length;
 
   return (
     <div className="page page--gray page--main">
@@ -134,17 +135,15 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  offersCount: PropTypes.number.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
-        amenities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        features: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         bedrooms: PropTypes.number.isRequired,
-        host: PropTypes.shape({
-          descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-          hostName: PropTypes.string.isRequired,
-          isHostPro: PropTypes.bool.isRequired,
-          srcHostAvatar: PropTypes.string.isRequired
-        }).isRequired,
+        descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired)
+        .isRequired,
+        hostName: PropTypes.string.isRequired,
+        isHostPro: PropTypes.bool.isRequired,
+        srcHostAvatar: PropTypes.string.isRequired,
         id: PropTypes.number.isRequired,
         isInBookmark: PropTypes.bool.isRequired,
         isPremium: PropTypes.bool.isRequired,
@@ -152,9 +151,8 @@ Main.propTypes = {
         price: PropTypes.number.isRequired,
         rating: PropTypes.number.isRequired,
         srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        srcPreviewImageOffer: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
-        type: PropTypes.oneOf(PLACE_TYPES).isRequired
+        type: PropTypes.oneOf(PLACE_TYPES).isRequired,
       })
   ).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
