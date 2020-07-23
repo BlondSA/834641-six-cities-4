@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import OfferList from "../offer-list/offer-list.jsx";
-import {PLACE_TYPES} from "../../const.js";
+import {PLACE_TYPES, CITY} from "../../const.js";
+import CityMap from "../city-map/city-map.jsx";
 
 const Main = (props) => {
   const {offers, onOfferTitleClick} = props;
@@ -124,9 +125,7 @@ const Main = (props) => {
                 onOfferTitleClick={onOfferTitleClick}
               />
             </section>
-            <div className="cities__right-section">
-              <section className="cities__map map"></section>
-            </div>
+            <CityMap offers={offers} city={CITY.AMSTERDAM}/>
           </div>
         </div>
       </main>
@@ -153,6 +152,19 @@ Main.propTypes = {
         srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         title: PropTypes.string.isRequired,
         type: PropTypes.oneOf(PLACE_TYPES).isRequired,
+        city: PropTypes.shape({
+          location: PropTypes.shape({
+            latitude: PropTypes.number.isRequired,
+            longitude: PropTypes.number.isRequired,
+            zoom: PropTypes.number.isRequired,
+          }),
+          name: PropTypes.string.isRequired,
+        }),
+        location: PropTypes.shape({
+          latitude: PropTypes.number.isRequired,
+          longitude: PropTypes.number.isRequired,
+          zoom: PropTypes.number.isRequired,
+        }),
       })
   ).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,

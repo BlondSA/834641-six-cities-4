@@ -9,10 +9,11 @@ describe(`Testing <App/>`, () => {
       .create(
           <App
             offers={offers}
-          />
-      )
-      .toJSON();
-
+          />, {
+            createNodeMock: () => {
+              return document.createElement(`div`);
+            },
+          }).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
