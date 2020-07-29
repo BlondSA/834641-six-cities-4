@@ -17,7 +17,7 @@ const OfferCard = (props) => {
     type,
   } = offer;
 
-  const onClick = (evt) => {
+  const handlerTitleClick = (evt) => {
     evt.preventDefault();
     onOfferTitleClick(offer);
   };
@@ -75,7 +75,7 @@ const OfferCard = (props) => {
         </div>
         <h2
           className="place-card__name"
-          onClick={onClick}
+          onClick={handlerTitleClick}
         >
           <a href="#" data-id={id}>
             {title}
