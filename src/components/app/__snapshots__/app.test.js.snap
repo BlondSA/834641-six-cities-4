@@ -244,7 +244,7 @@ exports[`Testing <App/> App component correctly show <Main/> 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="http://picsum.photos/260/200?r=4"
+                    src="http://picsum.photos/260/200?r=1"
                     width="260"
                   />
                 </a>
@@ -342,7 +342,7 @@ exports[`Testing <App/> App component correctly show <Main/> 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="http://picsum.photos/260/200?r=1"
+                    src="http://picsum.photos/260/200?r=2"
                     width="260"
                   />
                 </a>
@@ -440,7 +440,7 @@ exports[`Testing <App/> App component correctly show <Main/> 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="http://picsum.photos/260/200?r=2"
+                    src="http://picsum.photos/260/200?r=3"
                     width="260"
                   />
                 </a>
@@ -544,7 +544,7 @@ exports[`Testing <App/> App component correctly show <Main/> 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="http://picsum.photos/260/200?r=3"
+                    src="http://picsum.photos/260/200?r=4"
                     width="260"
                   />
                 </a>

@@ -2,12 +2,11 @@ import React from "react";
 import renderer from "react-test-renderer";
 import App from "./app.jsx";
 import {offers} from "../../mocks/offers.js";
-import {reviews} from "../../mocks/reviews.js";
 
 describe(`Testing <App/>`, () => {
   it(`App component correctly show <Main/>`, () => {
     const tree = renderer
-      .create(<App offers={offers} reviews={reviews} />, {
+      .create(<App offers={offers} />, {
         createNodeMock: () => {
           return document.createElement(`div`);
         },
@@ -18,7 +17,7 @@ describe(`Testing <App/>`, () => {
 
   it(`without_data`, () => {
     const tree = renderer
-      .create(<App offers={[]} reviews={[]} />, {
+      .create(<App offers={[]} />, {
         createNodeMock: () => {
           return document.createElement(`div`);
         },

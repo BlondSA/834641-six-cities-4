@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import leaflet from "leaflet";
 import {Coordinate, PLACE_TYPES, MapClassName} from "../../const.js";
 
-
 export default class CityMap extends PureComponent {
   constructor(props) {
     super(props);
@@ -34,7 +33,6 @@ export default class CityMap extends PureComponent {
 
     let zoom = 10;
 
-
     if (allOffers.length > 0) {
       cityCoordinate = [
         allOffers[0].city.location.latitude,
@@ -43,12 +41,10 @@ export default class CityMap extends PureComponent {
       zoom = allOffers[0].city.location.zoom;
     }
 
-
     const icon = leaflet.icon({
       iconUrl: `img/pin.svg`,
       iconSize: [30, 30],
     });
-
 
     const map = leaflet.map(mapContainer, {
       center: cityCoordinate,
@@ -58,19 +54,19 @@ export default class CityMap extends PureComponent {
     });
     map.setView(cityCoordinate, zoom);
 
-
     leaflet
       .tileLayer(
           `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`,
           {
-            attribution:
-            `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`,
+            attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`,
           }
-      ).addTo(map);
-
+      )
+      .addTo(map);
 
     allOffers.forEach((place) => {
-      leaflet.marker([place.location.latitude, place.location.longitude], {icon}).addTo(map);
+      leaflet
+        .marker([place.location.latitude, place.location.longitude], {icon})
+        .addTo(map);
     });
   }
 
@@ -86,35 +82,43 @@ CityMap.propTypes = {
   city: PropTypes.string.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
-        features: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         bedrooms: PropTypes.number.isRequired,
-        descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired)
-      .isRequired,
-        hostName: PropTypes.string.isRequired,
-        isHostPro: PropTypes.bool.isRequired,
-        srcHostAvatar: PropTypes.string.isRequired,
-        id: PropTypes.number.isRequired,
-        isInBookmark: PropTypes.bool.isRequired,
-        isPremium: PropTypes.bool.isRequired,
-        maxAdults: PropTypes.number.isRequired,
-        price: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        title: PropTypes.string.isRequired,
-        type: PropTypes.oneOf(PLACE_TYPES).isRequired,
         city: PropTypes.shape({
           location: PropTypes.shape({
             latitude: PropTypes.number.isRequired,
             longitude: PropTypes.number.isRequired,
-            zoom: PropTypes.number.isRequired,
+            zoom: PropTypes.number.isRequired
           }),
-          name: PropTypes.string.isRequired,
+          name: PropTypes.string.isRequired
         }),
+        description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        goods: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        id: PropTypes.number.isRequired,
+        images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        isInBookmark: PropTypes.bool.isRequired,
+        isPremium: PropTypes.bool.isRequired,
         location: PropTypes.shape({
           latitude: PropTypes.number.isRequired,
           longitude: PropTypes.number.isRequired,
-          zoom: PropTypes.number.isRequired,
+          zoom: PropTypes.number.isRequired
         }),
+        maxAdults: PropTypes.number.isRequired,
+        price: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+        reviews: PropTypes.arrayOf(PropTypes.shape({
+          comment: PropTypes.string.isRequired,
+          date: PropTypes.string.isRequired,
+          id: PropTypes.number.isRequired,
+          rating: PropTypes.number.isRequired,
+          user: PropTypes.shape({
+            avatarUrl: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
+            isPro: PropTypes.bool.isRequired,
+            name: PropTypes.string.isRequired
+          }).isRequired
+        })).isRequired,
+        title: PropTypes.string.isRequired,
+        type: PropTypes.oneOf(PLACE_TYPES).isRequired
       })
   ).isRequired,
   className: PropTypes.oneOf(Object.values(MapClassName)).isRequired,

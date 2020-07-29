@@ -39,20 +39,29 @@ OfferList.propTypes = {
   className: PropTypes.oneOf(Object.values(PlaceClassName)).isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
-        features: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        goods: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         bedrooms: PropTypes.number.isRequired,
-        descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired)
-        .isRequired,
-        hostName: PropTypes.string.isRequired,
-        isHostPro: PropTypes.bool.isRequired,
-        srcHostAvatar: PropTypes.string.isRequired,
+        description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         id: PropTypes.number.isRequired,
         isInBookmark: PropTypes.bool.isRequired,
         isPremium: PropTypes.bool.isRequired,
         maxAdults: PropTypes.number.isRequired,
         price: PropTypes.number.isRequired,
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              comment: PropTypes.string.isRequired,
+              date: PropTypes.string.isRequired,
+              id: PropTypes.number.isRequired,
+              rating: PropTypes.number.isRequired,
+              user: PropTypes.shape({
+                avatarUrl: PropTypes.string.isRequired,
+                id: PropTypes.number.isRequired,
+                isPro: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+              }).isRequired,
+            })).isRequired,
         rating: PropTypes.number.isRequired,
-        srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         title: PropTypes.string.isRequired,
         type: PropTypes.oneOf(PLACE_TYPES).isRequired,
       })

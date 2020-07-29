@@ -2,7 +2,6 @@ import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main.jsx";
 import {offers} from "../../mocks/offers.js";
-import {reviews} from "../../mocks/reviews.js";
 
 describe(`Testing <Main/>`, () => {
   it(`Main have rendered correctly`, () => {
@@ -10,7 +9,6 @@ describe(`Testing <Main/>`, () => {
       .create(
           <Main
             offers={offers}
-            reviews={reviews}
             onOfferTitleClick={() => {}} />, {
             createNodeMock: () => {
               return document.createElement(`div`);
@@ -24,7 +22,6 @@ describe(`Testing <Main/>`, () => {
     const tree = renderer
       .create(<Main
         offers={[]}
-        reviews={[]}
         onOfferTitleClick={() => {}} />, {
         createNodeMock: () => {
           return document.createElement(`div`);

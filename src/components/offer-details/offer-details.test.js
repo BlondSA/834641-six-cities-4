@@ -2,7 +2,6 @@ import React from "react";
 import renderer from "react-test-renderer";
 import OfferDetails from "../offer-details/offer-details.jsx";
 import {offers} from "../../mocks/offers.js";
-import {reviews} from "../../mocks/reviews.js";
 
 describe(`Testing <OfferDetails/>`, () => {
   it(`OfferDetails rendered correctly`, () => {
@@ -11,7 +10,6 @@ describe(`Testing <OfferDetails/>`, () => {
           <OfferDetails
             offer={offers[0]}
             offers={offers.slice(0, 3)}
-            reviews={reviews}
             onOfferTitleClick={() => {}}
           />,
           {

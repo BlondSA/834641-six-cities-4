@@ -12,22 +12,21 @@ import ReviewList from "../reviews-list/reviews-list.jsx";
 import {getRatingInStars} from "../../utils/common.js";
 
 const OfferDetails = (props) => {
-  const {offer, offers, onOfferTitleClick, reviews} = props;
+  const {offer, offers, onOfferTitleClick} = props;
   const {
-    features,
+    goods,
     bedrooms,
     isInBookmark = false,
     isPremium = false,
     maxAdults,
     price,
     rating,
-    srcImageOffer,
+    images,
     title,
     type,
-    isHostPro = false,
-    hostName,
-    srcHostAvatar,
-    descriptionOffer,
+    host,
+    description,
+    reviews,
   } = offer;
 
   const ratingInStars = getRatingInStars(rating);
@@ -72,7 +71,7 @@ const OfferDetails = (props) => {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {srcImageOffer.map((offerPhoto) => {
+              {images.map((offerPhoto) => {
                 return (
                   <div key={offerPhoto} className="property__image-wrapper">
                     <img
@@ -145,7 +144,7 @@ const OfferDetails = (props) => {
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  {features.map((feature) => {
+                  {goods.map((feature) => {
                     return (
                       <li key={feature} className="property__inside-item">
                         {feature}
@@ -159,26 +158,26 @@ const OfferDetails = (props) => {
                 <div className="property__host-user user">
                   <div
                     className={
-                      isHostPro
+                      host.isPro
                         ? `property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper`
                         : `property__avatar-wrapper property__avatar-wrapper user__avatar-wrapper`
                     }
                   >
                     <img
                       className="property__avatar user__avatar"
-                      src={srcHostAvatar}
+                      src={host.avatarUrl}
                       width="74"
                       height="74"
                       alt="Host avatar"
                     />
                   </div>
-                  <span className="property__user-name">{hostName}</span>
+                  <span className="property__user-name">{host.name}</span>
                 </div>
                 <div className="property__description">
-                  {descriptionOffer.map((description) => {
+                  {description.map((descriptionOffer) => {
                     return (
-                      <p key={description} className="property__text">
-                        {description}
+                      <p key={descriptionOffer} className="property__text">
+                        {descriptionOffer}
                       </p>
                     );
                   })}
@@ -213,52 +212,73 @@ const OfferDetails = (props) => {
 OfferDetails.propTypes = {
   offer: PropTypes.shape({
     bedrooms: PropTypes.number.isRequired,
-    descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    features: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    hostName: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    isHostPro: PropTypes.bool.isRequired,
+    description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    goods: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    host: PropTypes.shape({
+      isPro: PropTypes.bool.isRequired,
+      name: PropTypes.string.isRequired,
+      avatarUrl: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+    }).isRequired,
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          comment: PropTypes.string.isRequired,
+          date: PropTypes.string.isRequired,
+          id: PropTypes.number.isRequired,
+          rating: PropTypes.number.isRequired,
+          user: PropTypes.shape({
+            avatarUrl: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
+            isPro: PropTypes.bool.isRequired,
+            name: PropTypes.string.isRequired,
+          })
+        })
+    ).isRequired,
     isInBookmark: PropTypes.bool.isRequired,
     isPremium: PropTypes.bool.isRequired,
     maxAdults: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
-    srcHostAvatar: PropTypes.string.isRequired,
-    srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     title: PropTypes.string.isRequired,
     type: PropTypes.oneOf(PLACE_TYPES).isRequired,
   }).isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         bedrooms: PropTypes.number.isRequired,
-        descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired)
-        .isRequired,
-        features: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        hostName: PropTypes.string.isRequired,
-        id: PropTypes.number.isRequired,
-        isHostPro: PropTypes.bool.isRequired,
+        description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        goods: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        host: PropTypes.shape({
+          isPro: PropTypes.bool.isRequired,
+          name: PropTypes.string.isRequired,
+          avatarUrl: PropTypes.string.isRequired,
+          id: PropTypes.number.isRequired,
+        }).isRequired,
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              comment: PropTypes.string.isRequired,
+              date: PropTypes.string.isRequired,
+              id: PropTypes.number.isRequired,
+              rating: PropTypes.number.isRequired,
+              user: PropTypes.shape({
+                avatarUrl: PropTypes.string.isRequired,
+                id: PropTypes.number.isRequired,
+                isPro: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+              })
+            })
+        ).isRequired,
         isInBookmark: PropTypes.bool.isRequired,
         isPremium: PropTypes.bool.isRequired,
         maxAdults: PropTypes.number.isRequired,
         price: PropTypes.number.isRequired,
         rating: PropTypes.number.isRequired,
-        srcHostAvatar: PropTypes.string.isRequired,
-        srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         title: PropTypes.string.isRequired,
         type: PropTypes.oneOf(PLACE_TYPES).isRequired,
       })
   ).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
-  reviews: PropTypes.arrayOf(
-      PropTypes.shape({
-        comment: PropTypes.string.isRequired,
-        date: PropTypes.object.isRequired,
-        id: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        userAvatar: PropTypes.string.isRequired,
-        userName: PropTypes.string.isRequired,
-      })
-  ).isRequired,
 };
 
 export default OfferDetails;

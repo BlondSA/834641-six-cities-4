@@ -26,23 +26,20 @@ export default class App extends PureComponent {
 
     if (this.state.activeOffer === null) {
       return (
-        <Main
-          offers={offers}
-          onOfferTitleClick={this.handleOfferTitleClick} />
+        <Main offers={offers} onOfferTitleClick={this.handleOfferTitleClick} />
       );
     }
     return this._renderOffer(activeOffer);
   }
 
   _renderOffer(offer) {
-    const {offers, reviews} = this.props;
+    const {offers} = this.props;
     if (offers.length === 0) {
       return <h1>no data</h1>;
     }
     return (
       <OfferDetails
         offer={offer}
-        reviews={reviews}
         offers={offers.slice(0, 3)}
         onOfferTitleClick={this.handleOfferTitleClick}
       />
@@ -70,31 +67,30 @@ App.propTypes = {
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         bedrooms: PropTypes.number.isRequired,
-        descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired)
-        .isRequired,
-        features: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        hostName: PropTypes.string.isRequired,
+        description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        goods: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         id: PropTypes.number.isRequired,
-        isHostPro: PropTypes.bool.isRequired,
         isInBookmark: PropTypes.bool.isRequired,
         isPremium: PropTypes.bool.isRequired,
         maxAdults: PropTypes.number.isRequired,
         price: PropTypes.number.isRequired,
         rating: PropTypes.number.isRequired,
-        srcHostAvatar: PropTypes.string.isRequired,
-        srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              comment: PropTypes.string.isRequired,
+              date: PropTypes.string.isRequired,
+              id: PropTypes.number.isRequired,
+              rating: PropTypes.number.isRequired,
+              user: PropTypes.shape({
+                avatarUrl: PropTypes.string.isRequired,
+                id: PropTypes.number.isRequired,
+                isPro: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+              }).isRequired,
+            })).isRequired,
+        images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         title: PropTypes.string.isRequired,
         type: PropTypes.oneOf(PLACE_TYPES).isRequired,
-      })
-  ).isRequired,
-  reviews: PropTypes.arrayOf(
-      PropTypes.shape({
-        comment: PropTypes.string.isRequired,
-        date: PropTypes.object.isRequired,
-        id: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        userAvatar: PropTypes.string.isRequired,
-        userName: PropTypes.string.isRequired,
       })
   ).isRequired,
 };

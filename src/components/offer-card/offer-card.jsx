@@ -12,9 +12,9 @@ const OfferCard = (props) => {
     isPremium,
     price,
     rating,
-    srcImageOffer,
     title,
     type,
+    previewImage,
   } = offer;
 
   const onClick = (evt) => {
@@ -22,7 +22,6 @@ const OfferCard = (props) => {
     onOfferTitleClick(offer);
   };
 
-  const srcPreviewImageOffer = srcImageOffer[0];
   const ratingStars = getRatingInStars(rating);
 
   return (
@@ -40,7 +39,7 @@ const OfferCard = (props) => {
         <a href="#">
           <img
             className="place-card__image"
-            src={srcPreviewImageOffer}
+            src={previewImage}
             width="260"
             height="200"
             alt="Place image"
@@ -94,7 +93,7 @@ OfferCard.propTypes = {
     isPremium: PropTypes.bool.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
-    srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    previewImage: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     type: PropTypes.oneOf(PLACE_TYPES).isRequired,
   }).isRequired,

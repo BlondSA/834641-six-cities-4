@@ -146,40 +146,47 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        bedrooms: PropTypes.number.isRequired,
-        city: PropTypes.shape({
-          location: PropTypes.shape({
-            latitude: PropTypes.number.isRequired,
-            longitude: PropTypes.number.isRequired,
-            zoom: PropTypes.number.isRequired,
-          }),
-          name: PropTypes.string.isRequired,
-        }),
-        descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired)
-        .isRequired,
-        features: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        hostName: PropTypes.string.isRequired,
-        id: PropTypes.number.isRequired,
-        isHostPro: PropTypes.bool.isRequired,
-        isInBookmark: PropTypes.bool.isRequired,
-        isPremium: PropTypes.bool.isRequired,
-        location: PropTypes.shape({
-          latitude: PropTypes.number.isRequired,
-          longitude: PropTypes.number.isRequired,
-          zoom: PropTypes.number.isRequired,
-        }),
-        maxAdults: PropTypes.number.isRequired,
-        price: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        srcHostAvatar: PropTypes.string.isRequired,
-        srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        title: PropTypes.string.isRequired,
-        type: PropTypes.oneOf(PLACE_TYPES).isRequired,
-      })
-  ).isRequired,
-  onOfferTitleClick: PropTypes.func.isRequired,
+  offers: PropTypes.arrayOf(PropTypes.shape({
+    bedrooms: PropTypes.number.isRequired,
+    city: PropTypes.shape({
+      location: PropTypes.shape({
+        latitude: PropTypes.number.isRequired,
+        longitude: PropTypes.number.isRequired,
+        zoom: PropTypes.number.isRequired
+      }),
+      name: PropTypes.string.isRequired
+    }),
+    description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    goods: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    id: PropTypes.number.isRequired,
+    isInBookmark: PropTypes.bool.isRequired,
+    isPremium: PropTypes.bool.isRequired,
+    location: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+      zoom: PropTypes.number.isRequired
+    }),
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          comment: PropTypes.string.isRequired,
+          date: PropTypes.string.isRequired,
+          id: PropTypes.number.isRequired,
+          rating: PropTypes.number.isRequired,
+          user: PropTypes.shape({
+            avatarUrl: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
+            isPro: PropTypes.bool.isRequired,
+            name: PropTypes.string.isRequired,
+          }).isRequired,
+        })).isRequired,
+    maxAdults: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    title: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(PLACE_TYPES).isRequired
+  })).isRequired,
+  onOfferTitleClick: PropTypes.func.isRequired
 };
 
 export default Main;
