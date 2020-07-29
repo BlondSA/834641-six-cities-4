@@ -27,7 +27,7 @@ module.exports = {
   devtool: `source-map`,
   plugins: [
     new MomentLocalesPlugin({
-      localesToKeep: [`es-us`],
+      localesToKeep: [`en`],
     }),
   ],
 };

@@ -4,7 +4,7 @@ import {
   City,
   MapClassName,
   PLACE_TYPES,
-  PlacesClassNames,
+  PlaceClassName,
 } from "../../const.js";
 import OfferList from "../offer-list/offer-list.jsx";
 import CityMap from "../city-map/city-map.jsx";
@@ -200,7 +200,7 @@ const OfferDetails = (props) => {
             </h2>
             <OfferList
               offers={offers}
-              className={PlacesClassNames.PROPERTY}
+              className={PlaceClassName.PROPERTY}
               onOfferTitleClick={onOfferTitleClick}
             />
           </section>

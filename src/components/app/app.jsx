@@ -10,7 +10,6 @@ export default class App extends PureComponent {
     super(props);
 
     this.state = {
-      activeCardId: null,
       activeOffer: null,
     };
 
@@ -31,24 +30,23 @@ export default class App extends PureComponent {
           offers={offers}
           onOfferTitleClick={this.handleOfferTitleClick} />
       );
-    } else {
-      return this._renderOffer(activeOffer);
     }
+    return this._renderOffer(activeOffer);
   }
 
   _renderOffer(offer) {
     const {offers, reviews} = this.props;
-    if (offers.length > 0) {
-      return (
-        <OfferDetails
-          offer={offer}
-          reviews={reviews}
-          offers={offers.slice(0, 3)}
-          onOfferTitleClick={this.handleOfferTitleClick}
-        />
-      );
+    if (offers.length === 0) {
+      return <h1>no data</h1>;
     }
-    return <h1>no data</h1>;
+    return (
+      <OfferDetails
+        offer={offer}
+        reviews={reviews}
+        offers={offers.slice(0, 3)}
+        onOfferTitleClick={this.handleOfferTitleClick}
+      />
+    );
   }
 
   render() {

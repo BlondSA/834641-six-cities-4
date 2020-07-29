@@ -353,65 +353,6 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                   <span
                     className="reviews__user-name"
                   >
-                    Max
-                  </span>
-                </div>
-                <div
-                  className="reviews__info"
-                >
-                  <div
-                    className="reviews__rating rating"
-                  >
-                    <div
-                      className="reviews__stars rating__stars"
-                    >
-                      <span
-                        style={
-                          Object {
-                            "width": "20%",
-                          }
-                        }
-                      />
-                      <span
-                        className="visually-hidden"
-                      >
-                        Rating
-                      </span>
-                    </div>
-                  </div>
-                  <p
-                    className="reviews__text"
-                  >
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-                  </p>
-                  <time
-                    className="reviews__time"
-                    dateTime="2020-08-26"
-                  >
-                    August 2020
-                  </time>
-                </div>
-              </li>
-              <li
-                className="reviews__item"
-              >
-                <div
-                  className="reviews__user user"
-                >
-                  <div
-                    className="reviews__avatar-wrapper user__avatar-wrapper"
-                  >
-                    <img
-                      alt="Reviews avatar"
-                      className="reviews__avatar user__avatar"
-                      height="54"
-                      src="img/avatar-max.jpg"
-                      width="54"
-                    />
-                  </div>
-                  <span
-                    className="reviews__user-name"
-                  >
                     Keks
                   </span>
                 </div>
@@ -445,9 +386,68 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                   </p>
                   <time
                     className="reviews__time"
-                    dateTime="2020-08-10"
+                    dateTime="2020-04-10"
                   >
-                    August 2020
+                    April 2020
+                  </time>
+                </div>
+              </li>
+              <li
+                className="reviews__item"
+              >
+                <div
+                  className="reviews__user user"
+                >
+                  <div
+                    className="reviews__avatar-wrapper user__avatar-wrapper"
+                  >
+                    <img
+                      alt="Reviews avatar"
+                      className="reviews__avatar user__avatar"
+                      height="54"
+                      src="img/avatar-max.jpg"
+                      width="54"
+                    />
+                  </div>
+                  <span
+                    className="reviews__user-name"
+                  >
+                    Max
+                  </span>
+                </div>
+                <div
+                  className="reviews__info"
+                >
+                  <div
+                    className="reviews__rating rating"
+                  >
+                    <div
+                      className="reviews__stars rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "20%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <p
+                    className="reviews__text"
+                  >
+                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
+                  </p>
+                  <time
+                    className="reviews__time"
+                    dateTime="2020-02-26"
+                  >
+                    February 2020
                   </time>
                 </div>
               </li>
@@ -694,7 +694,6 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
         >
           <article
             className="near-places__card place-card"
-            onMouseEnter={[Function]}
           >
             <div
               className="place-card__mark"
@@ -799,7 +798,6 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
           </article>
           <article
             className="near-places__card place-card"
-            onMouseEnter={[Function]}
           >
             
             <div
@@ -898,7 +896,6 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
           </article>
           <article
             className="near-places__card place-card"
-            onMouseEnter={[Function]}
           >
             
             <div

@@ -17,7 +17,7 @@ const formatCommentDateFull = (date) => {
 };
 
 const getSortedReviews = (reviews) => {
-  const newReviews = reviews.slice();
+  const newReviews = [...reviews];
   return newReviews.sort((a, b) => b.date - a.date);
 };
 

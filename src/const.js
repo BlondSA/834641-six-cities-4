@@ -27,7 +27,7 @@ const MapClassName = {
   PROPERTY: `property__map`,
 };
 
-const PlacesClassNames = {
+const PlaceClassName = {
   MAIN: [`cities__places-list`, `cities__place-card`],
   PROPERTY: [`near-places__list`, `near-places__card`],
 };
@@ -40,5 +40,5 @@ export {
   MAX_STARS,
   MIN_REVIEW,
   PLACE_TYPES,
-  PlacesClassNames
+  PlaceClassName,
 };

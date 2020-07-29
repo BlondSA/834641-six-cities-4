@@ -226,7 +226,6 @@ exports[`Testing <App/> App component correctly show <Main/> 1`] = `
           >
             <article
               className="cities__place-card place-card"
-              onMouseEnter={[Function]}
             >
               <div
                 className="place-card__mark"
@@ -331,7 +330,6 @@ exports[`Testing <App/> App component correctly show <Main/> 1`] = `
             </article>
             <article
               className="cities__place-card place-card"
-              onMouseEnter={[Function]}
             >
               
               <div
@@ -430,7 +428,6 @@ exports[`Testing <App/> App component correctly show <Main/> 1`] = `
             </article>
             <article
               className="cities__place-card place-card"
-              onMouseEnter={[Function]}
             >
               
               <div
@@ -529,7 +526,6 @@ exports[`Testing <App/> App component correctly show <Main/> 1`] = `
             </article>
             <article
               className="cities__place-card place-card"
-              onMouseEnter={[Function]}
             >
               <div
                 className="place-card__mark"

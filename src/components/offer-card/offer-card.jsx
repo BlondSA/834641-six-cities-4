@@ -1,15 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {PLACE_TYPES, PlacesClassNames} from "../../const.js";
+import {PLACE_TYPES, PlaceClassName} from "../../const.js";
 import {getRatingInStars} from "../../utils/common.js";
 
+
 const OfferCard = (props) => {
-  const {
-    className,
-    offer,
-    onOfferCardHover,
-    onOfferTitleClick
-  } = props;
+  const {className, offer, onOfferTitleClick} = props;
   const {
     id,
     isInBookmark,
@@ -18,17 +14,21 @@ const OfferCard = (props) => {
     rating,
     srcImageOffer,
     title,
-    type
+    type,
   } = offer;
+
+  const onClick = (evt) => {
+    evt.preventDefault();
+    onOfferTitleClick(offer);
+  };
 
   const srcPreviewImageOffer = srcImageOffer[0];
   const ratingStars = getRatingInStars(rating);
 
-
   return (
     <article
       className={`${className} place-card`}
-      onMouseEnter={() => onOfferCardHover(offer)}>
+    >
       {isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>
@@ -69,17 +69,13 @@ const OfferCard = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span
-              style={{width: ratingStars}}
-            ></span>
+            <span style={{width: ratingStars}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <h2 className="place-card__name"
-          onClick={(evt) => {
-            evt.preventDefault();
-            onOfferTitleClick(offer);
-          }}
+        <h2
+          className="place-card__name"
+          onClick={onClick}
         >
           <a href="#" data-id={id}>
             {title}
@@ -100,11 +96,12 @@ OfferCard.propTypes = {
     rating: PropTypes.number.isRequired,
     srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     title: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(PLACE_TYPES).isRequired
+    type: PropTypes.oneOf(PLACE_TYPES).isRequired,
   }).isRequired,
-  onOfferCardHover: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
-  className: PropTypes.oneOf(Object.values(PlacesClassNames).map((name) => name[1])).isRequired,
+  className: PropTypes.oneOf(
+      Object.values(PlaceClassName).map((name) => name[1])
+  ).isRequired,
 };
 
 export default OfferCard;

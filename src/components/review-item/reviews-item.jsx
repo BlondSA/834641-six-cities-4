@@ -1,20 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {getRatingInStars} from "../../utils/common.js";
-import {
-  formatCommentDateFull,
-  formatCommentDateShort
-} from "../../utils/common.js";
+import {getRatingInStars, formatCommentDateFull, formatCommentDateShort} from "../../utils/common.js";
 
 const ReviewsItem = (props) => {
   const {review} = props;
-  const {
-    comment,
-    date,
-    rating,
-    userAvatar,
-    userName
-  } = review;
+  const {comment, date, rating, userAvatar, userName} = review;
 
   const ratingStars = getRatingInStars(rating);
 
@@ -42,9 +32,7 @@ const ReviewsItem = (props) => {
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <p className="reviews__text">
-          {comment}
-        </p>
+        <p className="reviews__text">{comment}</p>
         <time className="reviews__time" dateTime={fullDate}>
           {shortDate}
         </time>
@@ -60,8 +48,8 @@ ReviewsItem.propTypes = {
     id: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     userAvatar: PropTypes.string.isRequired,
-    userName: PropTypes.string.isRequired
-  }).isRequired
+    userName: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ReviewsItem;
