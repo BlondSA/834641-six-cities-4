@@ -1,25 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {MAX_STARS, PLACE_TYPES} from "../../const.js";
+import {PLACE_TYPES, PlacesClassNames} from "../../const.js";
+import {getRatingInStars} from "../../utils/common.js";
 
 const OfferCard = (props) => {
-  const {offer, onOfferTitleClick, onOfferCardHover} = props;
+  const {
+    className,
+    offer,
+    onOfferCardHover,
+    onOfferTitleClick
+  } = props;
   const {
     id,
-    srcImageOffer,
-    rating,
-    price,
-    title,
-    type,
     isInBookmark,
     isPremium,
+    price,
+    rating,
+    srcImageOffer,
+    title,
+    type
   } = offer;
 
   const srcPreviewImageOffer = srcImageOffer[0];
+  const ratingStars = getRatingInStars(rating);
+
 
   return (
     <article
-      className="cities__place-card place-card"
+      className={`${className} place-card`}
       onMouseEnter={() => onOfferCardHover(offer)}>
       {isPremium ? (
         <div className="place-card__mark">
@@ -28,7 +36,7 @@ const OfferCard = (props) => {
       ) : (
         ``
       )}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className="near-places__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img
             className="place-card__image"
@@ -62,7 +70,7 @@ const OfferCard = (props) => {
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
             <span
-              style={{width: `${(Math.round(rating) / MAX_STARS) * 100}%`}}
+              style={{width: ratingStars}}
             ></span>
             <span className="visually-hidden">Rating</span>
           </div>
@@ -86,16 +94,17 @@ const OfferCard = (props) => {
 OfferCard.propTypes = {
   offer: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     isInBookmark: PropTypes.bool.isRequired,
     isPremium: PropTypes.bool.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
+    srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     title: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(PLACE_TYPES).isRequired,
+    type: PropTypes.oneOf(PLACE_TYPES).isRequired
   }).isRequired,
   onOfferCardHover: PropTypes.func.isRequired,
-  onOfferTitleClick: PropTypes.func.isRequired
+  onOfferTitleClick: PropTypes.func.isRequired,
+  className: PropTypes.oneOf(Object.values(PlacesClassNames).map((name) => name[1])).isRequired,
 };
 
 export default OfferCard;

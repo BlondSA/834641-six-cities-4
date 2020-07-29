@@ -1,21 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing <CityMap/> <CityMap/> have rendered correctly show data 1`] = `
-<div
-  className="cities__right-section"
->
-  <section
-    className="cities__map map"
-  />
-</div>
+<section
+  className="cities__map map"
+/>
 `;
 
 exports[`Testing <CityMap/> without_data 1`] = `
-<div
-  className="cities__right-section"
->
-  <section
-    className="cities__map map"
-  />
-</div>
+<section
+  className="cities__map map"
+/>
 `;

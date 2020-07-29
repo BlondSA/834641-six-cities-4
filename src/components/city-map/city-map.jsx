@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import leaflet from "leaflet";
-import {COORDINATE, PLACE_TYPES} from "../../const.js";
+import {Coordinate, PLACE_TYPES, MapClassName} from "../../const.js";
 
 
 export default class CityMap extends PureComponent {
@@ -28,8 +28,8 @@ export default class CityMap extends PureComponent {
     const mapContainer = this._divRef.current;
 
     let cityCoordinate = [
-      COORDINATE[city.toUpperCase()][0],
-      COORDINATE[city.toUpperCase()][1],
+      Coordinate[city.toUpperCase()][0],
+      Coordinate[city.toUpperCase()][1],
     ];
 
     let zoom = 10;
@@ -75,10 +75,9 @@ export default class CityMap extends PureComponent {
   }
 
   render() {
+    const {className} = this.props;
     return (
-      <div className="cities__right-section">
-        <section className="cities__map map" ref={this._divRef}></section>
-      </div>
+      <section className={`${className} map`} ref={this._divRef}></section>
     );
   }
 }
@@ -118,4 +117,5 @@ CityMap.propTypes = {
         }),
       })
   ).isRequired,
+  className: PropTypes.oneOf(Object.values(MapClassName)).isRequired,
 };
