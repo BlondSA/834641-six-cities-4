@@ -2,6 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main.jsx";
 import {offers} from "../../mocks/offers.js";
+import {reviews} from "../../mocks/reviews.js";
 
 describe(`Testing <Main/>`, () => {
   it(`Main have rendered correctly`, () => {
@@ -9,11 +10,11 @@ describe(`Testing <Main/>`, () => {
       .create(
           <Main
             offers={offers}
-            onOfferTitleClick = {() => {}}
-          />, {
+            reviews={reviews}
+            onOfferTitleClick={() => {}} />, {
             createNodeMock: () => {
               return document.createElement(`div`);
-            }
+            },
           }
       )
       .toJSON();
@@ -21,7 +22,10 @@ describe(`Testing <Main/>`, () => {
   });
   it(`without data`, () => {
     const tree = renderer
-      .create(<Main offers={[]} onOfferTitleClick = {() => {}} />, {
+      .create(<Main
+        offers={[]}
+        reviews={[]}
+        onOfferTitleClick={() => {}} />, {
         createNodeMock: () => {
           return document.createElement(`div`);
         },

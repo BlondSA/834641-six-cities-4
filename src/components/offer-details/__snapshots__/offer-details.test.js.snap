@@ -327,12 +327,71 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
               <span
                 className="reviews__amount"
               >
-                1
+                3
               </span>
             </h2>
             <ul
               className="reviews__list"
             >
+              <li
+                className="reviews__item"
+              >
+                <div
+                  className="reviews__user user"
+                >
+                  <div
+                    className="reviews__avatar-wrapper user__avatar-wrapper"
+                  >
+                    <img
+                      alt="Reviews avatar"
+                      className="reviews__avatar user__avatar"
+                      height="54"
+                      src="img/avatar-max.jpg"
+                      width="54"
+                    />
+                  </div>
+                  <span
+                    className="reviews__user-name"
+                  >
+                    Keks
+                  </span>
+                </div>
+                <div
+                  className="reviews__info"
+                >
+                  <div
+                    className="reviews__rating rating"
+                  >
+                    <div
+                      className="reviews__stars rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "80%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <p
+                    className="reviews__text"
+                  >
+                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
+                  </p>
+                  <time
+                    className="reviews__time"
+                    dateTime="2020-04-10"
+                  >
+                    April 2020
+                  </time>
+                </div>
+              </li>
               <li
                 className="reviews__item"
               >
@@ -368,7 +427,7 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                       <span
                         style={
                           Object {
-                            "width": "80%",
+                            "width": "20%",
                           }
                         }
                       />
@@ -382,13 +441,72 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                   <p
                     className="reviews__text"
                   >
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
+                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
                   </p>
                   <time
                     className="reviews__time"
-                    dateTime="2019-04-24"
+                    dateTime="2020-02-26"
                   >
-                    April 2019
+                    February 2020
+                  </time>
+                </div>
+              </li>
+              <li
+                className="reviews__item"
+              >
+                <div
+                  className="reviews__user user"
+                >
+                  <div
+                    className="reviews__avatar-wrapper user__avatar-wrapper"
+                  >
+                    <img
+                      alt="Reviews avatar"
+                      className="reviews__avatar user__avatar"
+                      height="54"
+                      src="img/avatar-max.jpg"
+                      width="54"
+                    />
+                  </div>
+                  <span
+                    className="reviews__user-name"
+                  >
+                    Vova
+                  </span>
+                </div>
+                <div
+                  className="reviews__info"
+                >
+                  <div
+                    className="reviews__rating rating"
+                  >
+                    <div
+                      className="reviews__stars rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "100%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <p
+                    className="reviews__text"
+                  >
+                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
+                  </p>
+                  <time
+                    className="reviews__time"
+                    dateTime="2019-08-01"
+                  >
+                    August 2019
                   </time>
                 </div>
               </li>
@@ -530,15 +648,13 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                 <p
                   className="reviews__help"
                 >
-                  To submit review please make sure to set
-                   
+                  To submit review please make sure to set 
                   <span
                     className="reviews__star"
                   >
                     rating
                   </span>
-                   and describe your stay with at least
-                   
+                   and describe your stay with at least 
                   <b
                     className="reviews__text-amount"
                   >
@@ -574,11 +690,18 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
           Other places in the neighbourhood
         </h2>
         <div
-          className="near-places__list places__list"
+          className="near-places__list places__list tabs__content"
         >
           <article
             className="near-places__card place-card"
           >
+            <div
+              className="place-card__mark"
+            >
+              <span>
+                Premium
+              </span>
+            </div>
             <div
               className="near-places__image-wrapper place-card__image-wrapper"
             >
@@ -589,7 +712,6 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                   alt="Place image"
                   className="place-card__image"
                   height="200"
-                  id={1}
                   src="http://picsum.photos/260/200?r=4"
                   width="260"
                 />
@@ -607,7 +729,106 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                   <b
                     className="place-card__price-value"
                   >
-                    €80
+                    €
+                    120
+                  </b>
+                  <span
+                    className="place-card__price-text"
+                  >
+                    / night
+                  </span>
+                </div>
+                <button
+                  className="place-card__bookmark-button button"
+                  type="button"
+                >
+                  <svg
+                    className="place-card__bookmark-icon"
+                    height="19"
+                    width="18"
+                  >
+                    <use
+                      xlinkHref="#icon-bookmark"
+                    />
+                  </svg>
+                  <span
+                    className="visually-hidden"
+                  >
+                    To bookmarks
+                  </span>
+                </button>
+              </div>
+              <div
+                className="place-card__rating rating"
+              >
+                <div
+                  className="place-card__stars rating__stars"
+                >
+                  <span
+                    style={
+                      Object {
+                        "width": "20%",
+                      }
+                    }
+                  />
+                  <span
+                    className="visually-hidden"
+                  >
+                    Rating
+                  </span>
+                </div>
+              </div>
+              <h2
+                className="place-card__name"
+                onClick={[Function]}
+              >
+                <a
+                  data-id={1}
+                  href="#"
+                >
+                  Beautiful & luxurious apartment at great location
+                </a>
+              </h2>
+              <p
+                className="place-card__type"
+              >
+                Apartment
+              </p>
+            </div>
+          </article>
+          <article
+            className="near-places__card place-card"
+          >
+            
+            <div
+              className="near-places__image-wrapper place-card__image-wrapper"
+            >
+              <a
+                href="#"
+              >
+                <img
+                  alt="Place image"
+                  className="place-card__image"
+                  height="200"
+                  src="http://picsum.photos/260/200?r=1"
+                  width="260"
+                />
+              </a>
+            </div>
+            <div
+              className="place-card__info"
+            >
+              <div
+                className="place-card__price-wrapper"
+              >
+                <div
+                  className="place-card__price"
+                >
+                  <b
+                    className="place-card__price-value"
+                  >
+                    €
+                    80
                   </b>
                   <span
                     className="place-card__price-text"
@@ -631,7 +852,7 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                   <span
                     className="visually-hidden"
                   >
-                    In bookmarks
+                    To bookmarks
                   </span>
                 </button>
               </div>
@@ -644,7 +865,7 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                   <span
                     style={
                       Object {
-                        "width": "80%",
+                        "width": "40%",
                       }
                     }
                   />
@@ -657,8 +878,10 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
               </div>
               <h2
                 className="place-card__name"
+                onClick={[Function]}
               >
                 <a
+                  data-id={2}
                   href="#"
                 >
                   Wood and stone place
@@ -674,6 +897,7 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
           <article
             className="near-places__card place-card"
           >
+            
             <div
               className="near-places__image-wrapper place-card__image-wrapper"
             >
@@ -684,7 +908,7 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                   alt="Place image"
                   className="place-card__image"
                   height="200"
-                  src="img/apartment-02.jpg"
+                  src="http://picsum.photos/260/200?r=2"
                   width="260"
                 />
               </a>
@@ -701,7 +925,8 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                   <b
                     className="place-card__price-value"
                   >
-                    €132
+                    €
+                    132
                   </b>
                   <span
                     className="place-card__price-text"
@@ -738,7 +963,7 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                   <span
                     style={
                       Object {
-                        "width": "80%",
+                        "width": "60%",
                       }
                     }
                   />
@@ -751,105 +976,13 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
               </div>
               <h2
                 className="place-card__name"
+                onClick={[Function]}
               >
                 <a
+                  data-id={3}
                   href="#"
                 >
                   Canal View Prinsengracht
-                </a>
-              </h2>
-              <p
-                className="place-card__type"
-              >
-                Apartment
-              </p>
-            </div>
-          </article>
-          <article
-            className="near-places__card place-card"
-          >
-            <div
-              className="near-places__image-wrapper place-card__image-wrapper"
-            >
-              <a
-                href="#"
-              >
-                <img
-                  alt="Place image"
-                  className="place-card__image"
-                  height="200"
-                  src="img/apartment-03.jpg"
-                  width="260"
-                />
-              </a>
-            </div>
-            <div
-              className="place-card__info"
-            >
-              <div
-                className="place-card__price-wrapper"
-              >
-                <div
-                  className="place-card__price"
-                >
-                  <b
-                    className="place-card__price-value"
-                  >
-                    €180
-                  </b>
-                  <span
-                    className="place-card__price-text"
-                  >
-                    / night
-                  </span>
-                </div>
-                <button
-                  className="place-card__bookmark-button button"
-                  type="button"
-                >
-                  <svg
-                    className="place-card__bookmark-icon"
-                    height="19"
-                    width="18"
-                  >
-                    <use
-                      xlinkHref="#icon-bookmark"
-                    />
-                  </svg>
-                  <span
-                    className="visually-hidden"
-                  >
-                    To bookmarks
-                  </span>
-                </button>
-              </div>
-              <div
-                className="place-card__rating rating"
-              >
-                <div
-                  className="place-card__stars rating__stars"
-                >
-                  <span
-                    style={
-                      Object {
-                        "width": "100%",
-                      }
-                    }
-                  />
-                  <span
-                    className="visually-hidden"
-                  >
-                    Rating
-                  </span>
-                </div>
-              </div>
-              <h2
-                className="place-card__name"
-              >
-                <a
-                  href="#"
-                >
-                  Nice, cozy, warm big bed apartment
                 </a>
               </h2>
               <p

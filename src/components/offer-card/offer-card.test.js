@@ -2,6 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import OfferCard from "./offer-card.jsx";
 import {offers} from "../../mocks/offers.js";
+import {PlaceClassName} from "../../const.js";
 
 describe(`Testing <OfferCard/>`, () => {
   it(`OffersCard rendered correctly`, () => {
@@ -11,6 +12,7 @@ describe(`Testing <OfferCard/>`, () => {
             offer={offers[0]}
             onOfferTitleClick={() => {}}
             onOfferCardHover={() => {}}
+            className={PlaceClassName.MAIN[1]}
           />
       )
       .toJSON();

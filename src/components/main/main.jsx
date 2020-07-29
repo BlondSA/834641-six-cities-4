@@ -1,7 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import OfferList from "../offer-list/offer-list.jsx";
-import {PLACE_TYPES, CITY} from "../../const.js";
+import {
+  PLACE_TYPES,
+  City,
+  MapClassName,
+  PlaceClassName,
+} from "../../const.js";
 import CityMap from "../city-map/city-map.jsx";
 
 const Main = (props) => {
@@ -122,10 +127,17 @@ const Main = (props) => {
               </form>
               <OfferList
                 offers={offers}
+                className={PlaceClassName.MAIN}
                 onOfferTitleClick={onOfferTitleClick}
               />
             </section>
-            <CityMap offers={offers} city={CITY.AMSTERDAM}/>
+            <div className="cities__right-section">
+              <CityMap
+                offers={offers}
+                city={City.AMSTERDAM}
+                className={MapClassName.MAIN}
+              />
+            </div>
           </div>
         </div>
       </main>
@@ -136,22 +148,7 @@ const Main = (props) => {
 Main.propTypes = {
   offers: PropTypes.arrayOf(
       PropTypes.shape({
-        features: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         bedrooms: PropTypes.number.isRequired,
-        descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired)
-        .isRequired,
-        hostName: PropTypes.string.isRequired,
-        isHostPro: PropTypes.bool.isRequired,
-        srcHostAvatar: PropTypes.string.isRequired,
-        id: PropTypes.number.isRequired,
-        isInBookmark: PropTypes.bool.isRequired,
-        isPremium: PropTypes.bool.isRequired,
-        maxAdults: PropTypes.number.isRequired,
-        price: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        title: PropTypes.string.isRequired,
-        type: PropTypes.oneOf(PLACE_TYPES).isRequired,
         city: PropTypes.shape({
           location: PropTypes.shape({
             latitude: PropTypes.number.isRequired,
@@ -160,11 +157,26 @@ Main.propTypes = {
           }),
           name: PropTypes.string.isRequired,
         }),
+        descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired)
+        .isRequired,
+        features: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        hostName: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        isHostPro: PropTypes.bool.isRequired,
+        isInBookmark: PropTypes.bool.isRequired,
+        isPremium: PropTypes.bool.isRequired,
         location: PropTypes.shape({
           latitude: PropTypes.number.isRequired,
           longitude: PropTypes.number.isRequired,
           zoom: PropTypes.number.isRequired,
         }),
+        maxAdults: PropTypes.number.isRequired,
+        price: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+        srcHostAvatar: PropTypes.string.isRequired,
+        srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        title: PropTypes.string.isRequired,
+        type: PropTypes.oneOf(PLACE_TYPES).isRequired,
       })
   ).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,

@@ -6,7 +6,6 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
 >
   <article
     className="cities__place-card place-card"
-    onMouseEnter={[Function]}
   >
     <div
       className="place-card__mark"
@@ -16,7 +15,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
       </span>
     </div>
     <div
-      className="cities__image-wrapper place-card__image-wrapper"
+      className="near-places__image-wrapper place-card__image-wrapper"
     >
       <a
         href="#"
@@ -111,11 +110,10 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
   </article>
   <article
     className="cities__place-card place-card"
-    onMouseEnter={[Function]}
   >
     
     <div
-      className="cities__image-wrapper place-card__image-wrapper"
+      className="near-places__image-wrapper place-card__image-wrapper"
     >
       <a
         href="#"
@@ -210,11 +208,10 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
   </article>
   <article
     className="cities__place-card place-card"
-    onMouseEnter={[Function]}
   >
     
     <div
-      className="cities__image-wrapper place-card__image-wrapper"
+      className="near-places__image-wrapper place-card__image-wrapper"
     >
       <a
         href="#"
@@ -309,7 +306,6 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
   </article>
   <article
     className="cities__place-card place-card"
-    onMouseEnter={[Function]}
   >
     <div
       className="place-card__mark"
@@ -319,7 +315,7 @@ exports[`Testing <OffersList/> OffersList rendered correctly 1`] = `
       </span>
     </div>
     <div
-      className="cities__image-wrapper place-card__image-wrapper"
+      className="near-places__image-wrapper place-card__image-wrapper"
     >
       <a
         href="#"

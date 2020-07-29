@@ -1,28 +1,44 @@
 const MAX_STARS = 5;
+const MIN_REVIEW = 0;
+const MAX_REVIEW = 10;
 
 const PLACE_TYPES = [`Apartment`, `Private room`, `House`, `Hotel`];
 
-const CITY = {
-  PARIS: `Paris`,
-  COLOGNE: `Cologne`,
-  BRUSSELS: `Brussels`,
+const City = {
   AMSTERDAM: `Amsterdam`,
-  HAMBURG: `Hamburg`,
+  BRUSSELS: `Brussels`,
+  COLOGNE: `Cologne`,
   DUSSELDORF: `Hamburg`,
+  HAMBURG: `Hamburg`,
+  PARIS: `Paris`,
 };
 
-const COORDINATE = {
-  PARIS: [48.8652777777778, 2.3486111111111],
-  COLOGNE: [50.9330555555556, 6.95],
-  BRUSSELS: [50.8502777777778, 4.3486111111111],
+const Coordinate = {
   AMSTERDAM: [52.370216, 4.895168],
-  HAMBURG: [53.5752777777778, 10.0152777777778],
+  BRUSSELS: [50.8502777777778, 4.3486111111111],
+  COLOGNE: [50.9330555555556, 6.95],
   DUSSELDORF: [51.2216666666667, 6.7761111111111],
+  HAMBURG: [53.5752777777778, 10.0152777777778],
+  PARIS: [48.8652777777778, 2.3486111111111],
+};
+
+const MapClassName = {
+  MAIN: `cities__map`,
+  PROPERTY: `property__map`,
+};
+
+const PlaceClassName = {
+  MAIN: [`cities__places-list`, `cities__place-card`],
+  PROPERTY: [`near-places__list`, `near-places__card`],
 };
 
 export {
-  PLACE_TYPES,
+  City,
+  Coordinate,
+  MapClassName,
+  MAX_REVIEW,
   MAX_STARS,
-  CITY,
-  COORDINATE,
+  MIN_REVIEW,
+  PLACE_TYPES,
+  PlaceClassName,
 };

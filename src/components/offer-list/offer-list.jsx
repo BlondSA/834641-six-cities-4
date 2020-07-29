@@ -1,38 +1,33 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import OfferCard from "../offer-card/offer-card.jsx";
-import {PLACE_TYPES} from "../../const.js";
+import {PLACE_TYPES, PlaceClassName} from "../../const.js";
 
 export default class OfferList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      activeCardId: null,
-      activeCard: {},
-    };
+    // this.state = {
+    //   activeOffer: null,
+    // };
 
-    this.handleCardEnter = this.handleCardEnter.bind(this);
+    // this.handleCardEnter = this.handleCardEnter.bind(this);
   }
 
-  handleCardEnter(offer) {
-    if (offer !== this.state.activeCard) {
-      this.setState({
-        activeCard: offer,
-      });
-    }
-  }
+  // handleCardEnter(offer) {
+  //   this.setState({activeOffer: offer});
+  // }
 
   render() {
-    const {offers, onOfferTitleClick} = this.props;
+    const {offers, className, onOfferTitleClick} = this.props;
     return (
-      <div className="cities__places-list places__list tabs__content">
+      <div className={`${className[0]} places__list tabs__content`}>
         {offers.map((offer) => (
           <OfferCard
             key={offer.id}
             offer={offer}
+            className={className[1]}
             onOfferTitleClick={onOfferTitleClick}
-            onOfferCardHover={this.handleCardEnter}
           />
         ))}
       </div>
@@ -41,6 +36,7 @@ export default class OfferList extends PureComponent {
 }
 
 OfferList.propTypes = {
+  className: PropTypes.oneOf(Object.values(PlaceClassName)).isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         features: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,

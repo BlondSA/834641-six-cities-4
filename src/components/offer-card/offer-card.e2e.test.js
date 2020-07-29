@@ -3,6 +3,7 @@ import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import OfferCard from "./offer-card.jsx";
 import {offers} from "../../mocks/offers.js";
+import {PlaceClassName} from "../../const.js";
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -14,9 +15,10 @@ describe(`OfferCardE2eTest`, () => {
 
     const offerCard = shallow(
         <OfferCard
-          offer = {offers[0]}
-          onOfferTitleClick = {onOfferTitleClick}
+          offer={offers[0]}
+          onOfferTitleClick={onOfferTitleClick}
           onOfferCardHover={() => {}}
+          className={PlaceClassName.MAIN[1]}
         />
     );
 

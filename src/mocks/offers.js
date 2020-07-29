@@ -52,6 +52,15 @@ export const offers = [
       },
       name: `Amsterdam`,
     },
+    reviews: [{
+      comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
+      date: new Date(2020, 7, 10),
+      id: 2,
+      rating: 5,
+      userAvatar: `img/avatar-max.jpg`,
+      userId: 3,
+      userName: `Keks`,
+    }]
   },
   {
     features: [
@@ -103,6 +112,24 @@ export const offers = [
       },
       name: `Amsterdam`,
     },
+    reviews: [{
+      comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
+      date: new Date(2020, 7, 10),
+      id: 2,
+      rating: 1.9,
+      userAvatar: `img/avatar-max.jpg`,
+      userId: 3,
+      userName: `Keks`,
+    },
+    {
+      comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
+      date: new Date(2020, 7, 10),
+      id: 2,
+      rating: 1.9,
+      userAvatar: `img/avatar-max.jpg`,
+      userId: 3,
+      userName: `Keks`,
+    }]
   },
   {
     features: [
@@ -149,6 +176,15 @@ export const offers = [
       },
       name: `Amsterdam`,
     },
+    reviews: [{
+      comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
+      date: new Date(2020, 7, 10),
+      id: 2,
+      rating: 1.9,
+      userAvatar: `img/avatar-max.jpg`,
+      userId: 3,
+      userName: `Keks`,
+    }]
   },
   {
     features: [
@@ -195,5 +231,14 @@ export const offers = [
       },
       name: `Amsterdam`,
     },
+    reviews: [{
+      comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
+      date: new Date(2020, 7, 10),
+      id: 2,
+      rating: 1.9,
+      userAvatar: `img/avatar-max.jpg`,
+      userId: 3,
+      userName: `Keks`,
+    }]
   },
 ];
