@@ -2,27 +2,15 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import OfferCard from "../offer-card/offer-card.jsx";
 import {PLACE_TYPES, PlaceClassName} from "../../const.js";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer.js";
 
-export default class OfferList extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    // this.state = {
-    //   activeOffer: null,
-    // };
-
-    // this.handleCardEnter = this.handleCardEnter.bind(this);
-  }
-
-  // handleCardEnter(offer) {
-  //   this.setState({activeOffer: offer});
-  // }
-
+class OfferList extends PureComponent {
   render() {
-    const {offers, className, onOfferTitleClick} = this.props;
+    const {offersByCity, className, onOfferTitleClick} = this.props;
     return (
       <div className={`${className[0]} places__list tabs__content`}>
-        {offers.map((offer) => (
+        {offersByCity.map((offer) => (
           <OfferCard
             key={offer.id}
             offer={offer}
@@ -37,7 +25,7 @@ export default class OfferList extends PureComponent {
 
 OfferList.propTypes = {
   className: PropTypes.oneOf(Object.values(PlaceClassName)).isRequired,
-  offers: PropTypes.arrayOf(
+  offersByCity: PropTypes.arrayOf(
       PropTypes.shape({
         goods: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         bedrooms: PropTypes.number.isRequired,
@@ -59,7 +47,8 @@ OfferList.propTypes = {
                 isPro: PropTypes.bool.isRequired,
                 name: PropTypes.string.isRequired,
               }).isRequired,
-            })).isRequired,
+            })
+        ).isRequired,
         rating: PropTypes.number.isRequired,
         images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         title: PropTypes.string.isRequired,
@@ -68,3 +57,12 @@ OfferList.propTypes = {
   ).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  onOfferTitleClick(offer) {
+    dispatch(ActionCreator.selectActiveOffers(offer));
+  },
+});
+
+export {OfferList};
+export default connect(null, mapDispatchToProps)(OfferList);

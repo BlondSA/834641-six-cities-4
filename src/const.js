@@ -2,7 +2,7 @@ const MAX_STARS = 5;
 const MIN_REVIEW = 0;
 const MAX_REVIEW = 10;
 
-const PLACE_TYPES = [`Apartment`, `Private room`, `House`, `Hotel`];
+const PLACE_TYPES = [`apartment`, `private room`, `house`, `hotel`];
 
 const City = {
   AMSTERDAM: `Amsterdam`,

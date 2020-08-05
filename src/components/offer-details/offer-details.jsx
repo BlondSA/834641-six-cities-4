@@ -1,18 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  City,
-  MapClassName,
-  PLACE_TYPES,
-  PlaceClassName,
-} from "../../const.js";
+import {MapClassName, PLACE_TYPES, PlaceClassName} from "../../const.js";
 import OfferList from "../offer-list/offer-list.jsx";
 import CityMap from "../city-map/city-map.jsx";
 import ReviewList from "../reviews-list/reviews-list.jsx";
-import {getRatingInStars} from "../../utils/common.js";
+import {getRatingInStars, foramtToCapitalize} from "../../utils/common.js";
 
 const OfferDetails = (props) => {
-  const {offer, offers, onOfferTitleClick} = props;
+  const {offer, offersByCity} = props;
   const {
     goods,
     bedrooms,
@@ -30,7 +25,7 @@ const OfferDetails = (props) => {
   } = offer;
 
   const ratingInStars = getRatingInStars(rating);
-  const offersToShow = offers.slice(0, 3);
+  const typeCapitalize = foramtToCapitalize(type);
 
   return (
     <div className="page">
@@ -128,7 +123,7 @@ const OfferDetails = (props) => {
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  {type}
+                  {typeCapitalize}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
                   {`${bedrooms} Bedrooms`}
@@ -187,8 +182,7 @@ const OfferDetails = (props) => {
             </div>
           </div>
           <CityMap
-            offers={offersToShow}
-            city={City.AMSTERDAM}
+            offersByCity={offersByCity}
             className={MapClassName.PROPERTY}
           />
         </section>
@@ -198,9 +192,8 @@ const OfferDetails = (props) => {
               Other places in the neighbourhood
             </h2>
             <OfferList
-              offers={offers}
+              offersByCity={offersByCity}
               className={PlaceClassName.PROPERTY}
-              onOfferTitleClick={onOfferTitleClick}
             />
           </section>
         </div>
@@ -220,6 +213,12 @@ OfferDetails.propTypes = {
       avatarUrl: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
     }).isRequired,
+    images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    isInBookmark: PropTypes.bool.isRequired,
+    isPremium: PropTypes.bool.isRequired,
+    maxAdults: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
     reviews: PropTypes.arrayOf(
         PropTypes.shape({
           comment: PropTypes.string.isRequired,
@@ -231,19 +230,13 @@ OfferDetails.propTypes = {
             id: PropTypes.number.isRequired,
             isPro: PropTypes.bool.isRequired,
             name: PropTypes.string.isRequired,
-          })
+          }),
         })
     ).isRequired,
-    isInBookmark: PropTypes.bool.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    maxAdults: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     title: PropTypes.string.isRequired,
     type: PropTypes.oneOf(PLACE_TYPES).isRequired,
   }).isRequired,
-  offers: PropTypes.arrayOf(
+  offersByCity: PropTypes.arrayOf(
       PropTypes.shape({
         bedrooms: PropTypes.number.isRequired,
         description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
@@ -265,7 +258,7 @@ OfferDetails.propTypes = {
                 id: PropTypes.number.isRequired,
                 isPro: PropTypes.bool.isRequired,
                 name: PropTypes.string.isRequired,
-              })
+              }),
             })
         ).isRequired,
         isInBookmark: PropTypes.bool.isRequired,
@@ -278,7 +271,6 @@ OfferDetails.propTypes = {
         type: PropTypes.oneOf(PLACE_TYPES).isRequired,
       })
   ).isRequired,
-  onOfferTitleClick: PropTypes.func.isRequired,
 };
 
 export default OfferDetails;

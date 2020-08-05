@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {PLACE_TYPES, PlaceClassName} from "../../const.js";
-import {getRatingInStars} from "../../utils/common.js";
+import {getRatingInStars, foramtToCapitalize} from "../../utils/common.js";
 
 
 const OfferCard = (props) => {
@@ -23,6 +23,7 @@ const OfferCard = (props) => {
   };
 
   const ratingStars = getRatingInStars(rating);
+  const typeCapitalize = foramtToCapitalize(type);
 
   return (
     <article
@@ -80,7 +81,7 @@ const OfferCard = (props) => {
             {title}
           </a>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{typeCapitalize}</p>
       </div>
     </article>
   );
