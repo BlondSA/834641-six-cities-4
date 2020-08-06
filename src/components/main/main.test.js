@@ -17,22 +17,7 @@ describe(`Testing <Main/>`, () => {
     const tree = renderer
       .create(
           <Provider store={store}>
-            <Main activeCity={`Paris`} activeOffer={offers.slice(0, 1)} />
-          </Provider>,
-          {
-            createNodeMock: () => {
-              return document.createElement(`div`);
-            },
-          }
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-  it(`without data`, () => {
-    const tree = renderer
-      .create(
-          <Provider>
-            <Main offersByCity={[]} activeCity={offers[0].city.name} />
+            <Main activeCity={offers[0].city.name} offersByCity={offers} />
           </Provider>,
           {
             createNodeMock: () => {

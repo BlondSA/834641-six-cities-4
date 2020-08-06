@@ -5,9 +5,3 @@ exports[`Testing <CityMap/> <CityMap/> have rendered correctly show data 1`] = `
   className="cities__map map"
 />
 `;
-
-exports[`Testing <CityMap/> without_data 1`] = `
-<section
-  className="cities__map map"
-/>
-`;

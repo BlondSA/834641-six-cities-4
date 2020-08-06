@@ -2,16 +2,25 @@ import React from "react";
 import renderer from "react-test-renderer";
 import OfferDetails from "../offer-details/offer-details.jsx";
 import {offers} from "../../mocks/offers.js";
+import {Provider} from "react-redux";
+import configureStore from 'redux-mock-store';
 
+const mockStore = configureStore([]);
 describe(`Testing <OfferDetails/>`, () => {
   it(`OfferDetails rendered correctly`, () => {
+    const store = mockStore({
+      offer: offers[0],
+      offersByCity: offers.slice(0, 3),
+    });
     const tree = renderer
       .create(
-          <OfferDetails
-            offer={offers[0]}
-            offers={offers.slice(0, 3)}
-            onOfferTitleClick={() => {}}
-          />,
+          <Provider store={store}>
+            <OfferDetails
+              offer={offers[0]}
+              offersByCity={offers.slice(0, 3)}
+            />
+          </Provider>
+          ,
           {
             createNodeMock: () => {
               return document.createElement(`div`);

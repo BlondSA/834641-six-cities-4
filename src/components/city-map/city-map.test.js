@@ -7,18 +7,7 @@ import {MapClassName} from "../../const.js";
 describe(`Testing <CityMap/>`, () => {
   it(`<CityMap/> have rendered correctly show data`, () => {
     const tree = renderer
-      .create(<CityMap offers={offers} city={`Amsterdam`} className={MapClassName.MAIN} />, {
-        createNodeMock: () => {
-          return document.createElement(`div`);
-        },
-      })
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it(`without_data`, () => {
-    const tree = renderer
-      .create(<CityMap offers={[]} city={`Amsterdam`} className={MapClassName.MAIN} />, {
+      .create(<CityMap offersByCity={offers} className={MapClassName.MAIN} />, {
         createNodeMock: () => {
           return document.createElement(`div`);
         },

@@ -19,7 +19,7 @@ export default class CityMap extends PureComponent {
     mapContainer.remove();
   }
 
-  componentWillUnmount() {
+  componentDidUpdate() {
     this._map.remove();
     this._getMap();
   }
@@ -28,10 +28,12 @@ export default class CityMap extends PureComponent {
     const {offersByCity} = this.props;
     const mapContainer = this._divRef.current;
     const zoom = offersByCity[0].city.location.zoom;
+
     const cityCoordinate = [
       offersByCity[0].city.location.latitude,
       offersByCity[0].city.location.longitude,
     ];
+
     const icon = leaflet.icon({
       iconUrl: `img/pin.svg`,
       iconSize: [30, 40],
@@ -41,8 +43,9 @@ export default class CityMap extends PureComponent {
       center: cityCoordinate,
       zoom,
       zoomControl: false,
-      marker: true,
+      marker: false,
     });
+
     this._map.setView(cityCoordinate, zoom);
 
     leaflet
@@ -56,7 +59,9 @@ export default class CityMap extends PureComponent {
 
     offersByCity.forEach((place) => {
       leaflet
-        .marker([place.location.latitude, place.location.longitude], {icon})
+        .marker([place.location.latitude, place.location.longitude], {
+          icon,
+        })
         .addTo(this._map);
     });
   }

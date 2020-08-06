@@ -279,9 +279,9 @@ const offers = [
     bedrooms: 3,
     city: {
       location: {
-        latitude: 48.864716,
-        longitude: 2.349014,
-        zoom: 11,
+        latitude: 48.8652777777778,
+        longitude: 2.3486111111111,
+        zoom: 10,
       },
       name: `Paris`,
     },
@@ -303,7 +303,7 @@ const offers = [
       `Fridge`,
     ],
     host: {
-      avatarUrl: `avatar-max.jpg`,
+      avatarUrl: `img/avatar-max.jpg`,
       id: 1,
       isPro: true,
       name: `Ioahn`,
@@ -361,9 +361,9 @@ const offers = [
     bedrooms: 1,
     city: {
       location: {
-        latitude: 48.864716,
-        longitude: 2.349014,
-        zoom: 11,
+        latitude: 48.8652777777778,
+        longitude: 2.3486111111111,
+        zoom: 10,
       },
       name: `Paris`,
     },
@@ -426,9 +426,9 @@ const offers = [
     bedrooms: 3,
     city: {
       location: {
-        latitude: 48.864716,
-        longitude: 2.349014,
-        zoom: 11,
+        latitude: 48.8652777777778,
+        longitude: 2.3486111111111,
+        zoom: 10,
       },
       name: `Paris`,
     },
@@ -505,9 +505,9 @@ const offers = [
     bedrooms: 3,
     city: {
       location: {
-        latitude: 48.864716,
-        longitude: 2.349014,
-        zoom: 11,
+        latitude: 48.8652777777778,
+        longitude: 2.3486111111111,
+        zoom: 10,
       },
       name: `Paris`,
     },
@@ -529,7 +529,7 @@ const offers = [
       `Fridge`,
     ],
     host: {
-      avatarUrl: `avatar-max.jpg`,
+      avatarUrl: `img/avatar-max.jpg`,
       id: 1,
       isPro: true,
       name: `Yuriy`,
@@ -845,7 +845,7 @@ const offers = [
       `Fridge`,
     ],
     host: {
-      avatarUrl: `avatar-max.jpg`,
+      avatarUrl: `img/avatar-max.jpg`,
       id: 1,
       isPro: true,
       name: `Yuriy`,
