@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {PLACE_TYPES, PlaceClassName} from "../../const.js";
+import {OFFER_TYPES, OfferClassName} from "../../const.js";
 import {getRatingInStars, foramtToCapitalize} from "../../utils/common.js";
-
 
 const OfferCard = (props) => {
   const {className, offer, onOfferTitleClick} = props;
@@ -26,9 +25,7 @@ const OfferCard = (props) => {
   const typeCapitalize = foramtToCapitalize(type);
 
   return (
-    <article
-      className={`${className} place-card`}
-    >
+    <article className={`${className} place-card`}>
       {isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>
@@ -73,10 +70,7 @@ const OfferCard = (props) => {
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <h2
-          className="place-card__name"
-          onClick={onClick}
-        >
+        <h2 className="place-card__name" onClick={onClick}>
           <a href="#" data-id={id}>
             {title}
           </a>
@@ -96,11 +90,11 @@ OfferCard.propTypes = {
     rating: PropTypes.number.isRequired,
     previewImage: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(PLACE_TYPES).isRequired,
+    type: PropTypes.oneOf(OFFER_TYPES).isRequired,
   }).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
   className: PropTypes.oneOf(
-      Object.values(PlaceClassName).map((name) => name[1])
+      Object.values(OfferClassName).map((name) => name[1])
   ).isRequired,
 };
 

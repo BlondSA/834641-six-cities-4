@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import OfferList from "./offer-list.jsx";
 import {offers} from "../../mocks/offers.js";
-import {PlaceClassName} from "../../const.js";
+import {OfferClassName} from "../../const.js";
 
 describe(`Testing <OffersList/>`, () => {
   it(`OffersList rendered correctly`, () => {
@@ -11,7 +11,7 @@ describe(`Testing <OffersList/>`, () => {
           <OfferList
             offers={offers}
             onOfferTitleClick={() => {}}
-            className={PlaceClassName.MAIN}
+            className={OfferClassName.MAIN}
           />
       )
       .toJSON();

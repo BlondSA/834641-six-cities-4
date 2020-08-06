@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {ActionCreator} from "../../reducer";
+import {ActionCreator} from "../../reducer.js";
 import {connect} from "react-redux";
 
 class CityList extends PureComponent {
@@ -9,12 +9,11 @@ class CityList extends PureComponent {
   }
   render() {
     const {activeCity, cities, onCityNameClick} = this.props;
-
     return (
       <section className="locations container">
         <ul className="locations__list tabs__list">
-          {cities.map((city, i) => (
-            <li className="locations__item" key={`${city}-${i}`}>
+          {cities.map((city) => (
+            <li className="locations__item" key={`${city}`}>
               <a
                 className={`locations__item-link tabs__item
             ${city === activeCity && `tabs__item--active`}
@@ -33,6 +32,7 @@ class CityList extends PureComponent {
     );
   }
 }
+
 
 CityList.propTypes = {
   activeCity: PropTypes.string.isRequired,

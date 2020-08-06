@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import OfferCard from "../offer-card/offer-card.jsx";
-import {PLACE_TYPES, PlaceClassName} from "../../const.js";
+import {OFFER_TYPES, OfferClassName} from "../../const.js";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer.js";
 
@@ -24,7 +24,7 @@ class OfferList extends PureComponent {
 }
 
 OfferList.propTypes = {
-  className: PropTypes.oneOf(Object.values(PlaceClassName)).isRequired,
+  className: PropTypes.oneOf(Object.values(OfferClassName)).isRequired,
   offersByCity: PropTypes.arrayOf(
       PropTypes.shape({
         goods: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
@@ -52,7 +52,7 @@ OfferList.propTypes = {
         rating: PropTypes.number.isRequired,
         images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         title: PropTypes.string.isRequired,
-        type: PropTypes.oneOf(PLACE_TYPES).isRequired,
+        type: PropTypes.oneOf(OFFER_TYPES).isRequired,
       })
   ).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
@@ -60,7 +60,7 @@ OfferList.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onOfferTitleClick(offer) {
-    dispatch(ActionCreator.selectActiveOffers(offer));
+    dispatch(ActionCreator.selectActiveOffer(offer));
   },
 });
 

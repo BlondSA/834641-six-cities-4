@@ -6,7 +6,6 @@ const ReviewsItem = ({review}) => {
   const {comment, date, rating, user} = review;
 
   const ratingStars = getRatingInStars(rating);
-
   const shortDate = formatCommentDateShort(date);
   const fullDate = formatCommentDateFull(date);
 

@@ -1,5 +1,5 @@
 import {offers} from "./mocks/offers.js";
-import {extend, filterOffersByCity, getCityList} from "./utils/common.js";
+import {extend, getCityList, filterOffersByCity} from "./utils/common.js";
 
 const initialState = {
   offers,
@@ -20,7 +20,7 @@ const ActionCreator = {
     payload: city,
   }),
 
-  selectActiveOffers: (offer) => ({
+  selectActiveOffer: (offer) => ({
     type: ActionType.SELECT_OFFERS,
     payload: offer,
   }),
@@ -31,7 +31,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.SELECT_CITY:
       return extend(state, {
         activeCity: action.payload,
-        activeOfferByCity: filterOffersByCity(state.offers, action.payload),
+        offersByCity: filterOffersByCity(state.offers, action.payload),
       });
     case ActionType.SELECT_OFFERS:
       return extend(state, {activeOffer: action.payload});
@@ -40,4 +40,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export {ActionType, reducer, ActionCreator};
+export {ActionCreator, ActionType, reducer};

@@ -29,14 +29,14 @@ const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
-const filterOffersByCity = (offers, cityName) => {
-  return offers.filter((offer) => {
+const filterOffersByCity = (allOffers, cityName) => {
+  return allOffers.filter((offer) => {
     return offer.city.name === cityName;
   });
 };
 
-const getCityList = (offers) => {
-  const cities = [...new Set(offers.map((offer) => offer.city.name))];
+const getCityList = (allOffers) => {
+  const cities = [...new Set(allOffers.map((offer) => offer.city.name))];
   const citiesList = cities.slice(0, 6);
   return citiesList;
 };

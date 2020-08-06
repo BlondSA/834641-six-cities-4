@@ -17,7 +17,7 @@ describe(`Testing <Main/>`, () => {
     const tree = renderer
       .create(
           <Provider store={store}>
-            <Main activeCity={`Paris`} activeOffers={offers.slice(0, 1)} />
+            <Main activeCity={`Paris`} activeOffer={offers.slice(0, 1)} />
           </Provider>,
           {
             createNodeMock: () => {

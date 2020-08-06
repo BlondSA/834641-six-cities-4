@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {MapClassName, PLACE_TYPES, PlaceClassName} from "../../const.js";
+import {MapClassName, OFFER_TYPES, OfferClassName} from "../../const.js";
 import OfferList from "../offer-list/offer-list.jsx";
 import CityMap from "../city-map/city-map.jsx";
 import ReviewList from "../reviews-list/reviews-list.jsx";
@@ -193,7 +193,7 @@ const OfferDetails = (props) => {
             </h2>
             <OfferList
               offersByCity={offersByCity}
-              className={PlaceClassName.PROPERTY}
+              className={OfferClassName.PROPERTY}
             />
           </section>
         </div>
@@ -234,7 +234,7 @@ OfferDetails.propTypes = {
         })
     ).isRequired,
     title: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(PLACE_TYPES).isRequired,
+    type: PropTypes.oneOf(OFFER_TYPES).isRequired,
   }).isRequired,
   offersByCity: PropTypes.arrayOf(
       PropTypes.shape({
@@ -268,7 +268,7 @@ OfferDetails.propTypes = {
         rating: PropTypes.number.isRequired,
         images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         title: PropTypes.string.isRequired,
-        type: PropTypes.oneOf(PLACE_TYPES).isRequired,
+        type: PropTypes.oneOf(OFFER_TYPES).isRequired,
       })
   ).isRequired,
 };

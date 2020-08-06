@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import OfferList from "../offer-list/offer-list.jsx";
-import {PLACE_TYPES, MapClassName, PlaceClassName} from "../../const.js";
+import {OFFER_TYPES, MapClassName, OfferClassName} from "../../const.js";
 import CityMap from "../city-map/city-map.jsx";
-import {CityList} from "../city-list/city-list.jsx";
+import CityList from "../city-list/city-list.jsx";
 
 const Main = (props) => {
   const {activeCity, offersByCity} = props;
@@ -92,7 +92,7 @@ const Main = (props) => {
               </form>
               <OfferList
                 offersByCity={offersByCity}
-                className={PlaceClassName.MAIN}
+                className={OfferClassName.MAIN}
               />
             </section>
             <div className="cities__right-section">
@@ -150,7 +150,7 @@ Main.propTypes = {
         rating: PropTypes.number.isRequired,
         images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         title: PropTypes.string.isRequired,
-        type: PropTypes.oneOf(PLACE_TYPES).isRequired,
+        type: PropTypes.oneOf(OFFER_TYPES).isRequired,
       })
   ).isRequired,
 };
