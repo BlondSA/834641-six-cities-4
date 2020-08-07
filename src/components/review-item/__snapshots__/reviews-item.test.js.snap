@@ -21,7 +21,7 @@ exports[`ReviewsItem_snapchots with_data 1`] = `
     <span
       className="reviews__user-name"
     >
-      Keks
+      Max
     </span>
   </div>
   <div
@@ -36,7 +36,7 @@ exports[`ReviewsItem_snapchots with_data 1`] = `
         <span
           style={
             Object {
-              "width": "100%",
+              "width": "80%",
             }
           }
         />
@@ -50,13 +50,13 @@ exports[`ReviewsItem_snapchots with_data 1`] = `
     <p
       className="reviews__text"
     >
-      A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
+      One A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
     </p>
     <time
       className="reviews__time"
-      dateTime="2020-08-10"
+      dateTime="2019-06-08"
     >
-      August 2020
+      June 2019
     </time>
   </div>
 </li>

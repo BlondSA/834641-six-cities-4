@@ -21,7 +21,7 @@ exports[`Testing <OfferCard/> OffersCard rendered correctly 1`] = `
         alt="Place image"
         className="place-card__image"
         height="200"
-        src="http://picsum.photos/260/200?r=4"
+        src="http://picsum.photos/260/200?r=1"
         width="260"
       />
     </a>

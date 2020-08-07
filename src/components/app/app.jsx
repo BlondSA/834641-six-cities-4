@@ -3,54 +3,35 @@ import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import OfferDetails from "../offer-details/offer-details.jsx";
-import {PLACE_TYPES} from "../../const.js";
+import {OFFER_TYPES} from "../../const.js";
+import {connect} from "react-redux";
 
-export default class App extends PureComponent {
+class App extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      activeOffer: null,
-    };
-
-    this.handleOfferTitleClick = this.handleOfferTitleClick.bind(this);
-  }
-
-  handleOfferTitleClick(offer) {
-    this.setState({activeOffer: offer});
   }
 
   _renderMain() {
-    const {offers} = this.props;
-    const {activeOffer} = this.state;
+    const {activeCity, activeOffer, offersByCity} = this.props;
 
-    if (this.state.activeOffer === null) {
-      return (
-        <Main
-          offers={offers}
-          onOfferTitleClick={this.handleOfferTitleClick} />
-      );
+    if (activeOffer === false) {
+      return <Main offersByCity={offersByCity} activeCity={activeCity} />;
     }
     return this._renderOffer(activeOffer);
   }
 
   _renderOffer(offer) {
-    const {offers, reviews} = this.props;
-    if (offers.length === 0) {
+    const {offersByCity} = this.props;
+    if (offersByCity.length === 0) {
       return <h1>no data</h1>;
     }
     return (
-      <OfferDetails
-        offer={offer}
-        reviews={reviews}
-        offers={offers.slice(0, 3)}
-        onOfferTitleClick={this.handleOfferTitleClick}
-      />
+      <OfferDetails offer={offer} offersByCity={offersByCity.slice(0, 3)} />
     );
   }
 
   render() {
-    const {offers} = this.props;
+    const {offersByCity} = this.props;
     return (
       <BrowserRouter>
         <Switch>
@@ -58,7 +39,7 @@ export default class App extends PureComponent {
             {this._renderMain()}
           </Route>
           <Route exact path="/offer-details">
-            {this._renderOffer(offers[0])}
+            {this._renderOffer(offersByCity[0])}
           </Route>
         </Switch>
       </BrowserRouter>
@@ -67,34 +48,76 @@ export default class App extends PureComponent {
 }
 
 App.propTypes = {
-  offers: PropTypes.arrayOf(
+  activeCity: PropTypes.string.isRequired,
+  activeOffer: PropTypes.oneOfType([
+    PropTypes.shape({
+      bedrooms: PropTypes.number.isRequired,
+      description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+      goods: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+      id: PropTypes.number.isRequired,
+      isInBookmark: PropTypes.bool.isRequired,
+      isPremium: PropTypes.bool.isRequired,
+      maxAdults: PropTypes.number.isRequired,
+      price: PropTypes.number.isRequired,
+      rating: PropTypes.number.isRequired,
+      reviews: PropTypes.arrayOf(
+          PropTypes.shape({
+            comment: PropTypes.string.isRequired,
+            date: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
+            rating: PropTypes.number.isRequired,
+            user: PropTypes.shape({
+              avatarUrl: PropTypes.string.isRequired,
+              id: PropTypes.number.isRequired,
+              isPro: PropTypes.bool.isRequired,
+              name: PropTypes.string.isRequired,
+            }).isRequired,
+          })
+      ).isRequired,
+      images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+      title: PropTypes.string.isRequired,
+      type: PropTypes.oneOf(OFFER_TYPES).isRequired,
+    }).isRequired,
+    PropTypes.bool,
+  ]),
+  offersByCity: PropTypes.arrayOf(
       PropTypes.shape({
         bedrooms: PropTypes.number.isRequired,
-        descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired)
-        .isRequired,
-        features: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        hostName: PropTypes.string.isRequired,
+        description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        goods: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         id: PropTypes.number.isRequired,
-        isHostPro: PropTypes.bool.isRequired,
         isInBookmark: PropTypes.bool.isRequired,
         isPremium: PropTypes.bool.isRequired,
         maxAdults: PropTypes.number.isRequired,
         price: PropTypes.number.isRequired,
         rating: PropTypes.number.isRequired,
-        srcHostAvatar: PropTypes.string.isRequired,
-        srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              comment: PropTypes.string.isRequired,
+              date: PropTypes.string.isRequired,
+              id: PropTypes.number.isRequired,
+              rating: PropTypes.number.isRequired,
+              user: PropTypes.shape({
+                avatarUrl: PropTypes.string.isRequired,
+                id: PropTypes.number.isRequired,
+                isPro: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+              }).isRequired,
+            })
+        ).isRequired,
+        images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         title: PropTypes.string.isRequired,
-        type: PropTypes.oneOf(PLACE_TYPES).isRequired,
-      })
-  ).isRequired,
-  reviews: PropTypes.arrayOf(
-      PropTypes.shape({
-        comment: PropTypes.string.isRequired,
-        date: PropTypes.object.isRequired,
-        id: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        userAvatar: PropTypes.string.isRequired,
-        userName: PropTypes.string.isRequired,
+        type: PropTypes.oneOf(OFFER_TYPES).isRequired,
       })
   ).isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  activeCity: state.activeCity,
+  activeOffer: state.activeOffer,
+  offers: state.offers,
+  offersByCity: state.offersByCity,
+});
+
+export {App};
+export default connect(mapStateToProps)(App);

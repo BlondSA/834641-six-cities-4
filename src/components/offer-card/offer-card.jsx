@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {PLACE_TYPES, PlaceClassName} from "../../const.js";
-import {getRatingInStars} from "../../utils/common.js";
-
+import {OFFER_TYPES, OfferClassName} from "../../const.js";
+import {getRatingInStars, foramtToCapitalize} from "../../utils/common.js";
 
 const OfferCard = (props) => {
   const {className, offer, onOfferTitleClick} = props;
@@ -12,9 +11,9 @@ const OfferCard = (props) => {
     isPremium,
     price,
     rating,
-    srcImageOffer,
     title,
     type,
+    previewImage,
   } = offer;
 
   const onClick = (evt) => {
@@ -22,13 +21,11 @@ const OfferCard = (props) => {
     onOfferTitleClick(offer);
   };
 
-  const srcPreviewImageOffer = srcImageOffer[0];
   const ratingStars = getRatingInStars(rating);
+  const typeCapitalize = foramtToCapitalize(type);
 
   return (
-    <article
-      className={`${className} place-card`}
-    >
+    <article className={`${className} place-card`}>
       {isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>
@@ -40,7 +37,7 @@ const OfferCard = (props) => {
         <a href="#">
           <img
             className="place-card__image"
-            src={srcPreviewImageOffer}
+            src={previewImage}
             width="260"
             height="200"
             alt="Place image"
@@ -73,15 +70,12 @@ const OfferCard = (props) => {
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <h2
-          className="place-card__name"
-          onClick={onClick}
-        >
+        <h2 className="place-card__name" onClick={onClick}>
           <a href="#" data-id={id}>
             {title}
           </a>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{typeCapitalize}</p>
       </div>
     </article>
   );
@@ -94,13 +88,13 @@ OfferCard.propTypes = {
     isPremium: PropTypes.bool.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
-    srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    previewImage: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(PLACE_TYPES).isRequired,
+    type: PropTypes.oneOf(OFFER_TYPES).isRequired,
   }).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
   className: PropTypes.oneOf(
-      Object.values(PlaceClassName).map((name) => name[1])
+      Object.values(OfferClassName).map((name) => name[1])
   ).isRequired,
 };
 

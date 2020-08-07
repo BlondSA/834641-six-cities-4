@@ -4,9 +4,7 @@ import ReviewsItem from '../review-item/reviews-item.jsx';
 import {getSortedReviews} from "../../utils/common.js";
 import {MIN_REVIEW, MAX_REVIEW} from "../../const.js";
 
-const ReviewsList = (props) =>{
-  const {reviews} = props;
-
+const ReviewsList = ({reviews}) =>{
   const reviewsCount = reviews.length;
   const sortedReviews = getSortedReviews(reviews).splice(MIN_REVIEW, MAX_REVIEW);
 
@@ -67,14 +65,19 @@ const ReviewsList = (props) =>{
 };
 
 ReviewsList.propTypes = {
-  reviews: PropTypes.arrayOf(PropTypes.shape({
-    comment: PropTypes.string.isRequired,
-    date: PropTypes.object.isRequired,
-    id: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    userAvatar: PropTypes.string.isRequired,
-    userName: PropTypes.string.isRequired
-  })).isRequired
+  reviews: PropTypes.arrayOf(
+      PropTypes.shape({
+        comment: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+        user: PropTypes.shape({
+          avatarUrl: PropTypes.string.isRequired,
+          id: PropTypes.number.isRequired,
+          isPro: PropTypes.bool.isRequired,
+          name: PropTypes.string.isRequired,
+        }).isRequired,
+      })).isRequired,
 };
 
 export default ReviewsList;

@@ -1,8 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import leaflet from "leaflet";
-import {Coordinate, PLACE_TYPES, MapClassName} from "../../const.js";
-
+import {OFFER_TYPES, MapClassName} from "../../const.js";
 
 export default class CityMap extends PureComponent {
   constructor(props) {
@@ -20,57 +19,50 @@ export default class CityMap extends PureComponent {
     mapContainer.remove();
   }
 
+  componentDidUpdate() {
+    this._map.remove();
+    this._getMap();
+  }
+
   _getMap() {
-    const {offers, city} = this.props;
-
-    const allOffers = offers.filter((place) => place.city.name === city);
-
+    const {offersByCity} = this.props;
     const mapContainer = this._divRef.current;
+    const zoom = offersByCity[0].city.location.zoom;
 
-    let cityCoordinate = [
-      Coordinate[city.toUpperCase()][0],
-      Coordinate[city.toUpperCase()][1],
+    const cityCoordinate = [
+      offersByCity[0].city.location.latitude,
+      offersByCity[0].city.location.longitude,
     ];
-
-    let zoom = 10;
-
-
-    if (allOffers.length > 0) {
-      cityCoordinate = [
-        allOffers[0].city.location.latitude,
-        allOffers[0].city.location.longitude,
-      ];
-      zoom = allOffers[0].city.location.zoom;
-    }
-
 
     const icon = leaflet.icon({
       iconUrl: `img/pin.svg`,
-      iconSize: [30, 30],
+      iconSize: [30, 40],
     });
 
-
-    const map = leaflet.map(mapContainer, {
+    this._map = leaflet.map(mapContainer, {
       center: cityCoordinate,
       zoom,
       zoomControl: false,
-      marker: true,
+      marker: false,
     });
-    map.setView(cityCoordinate, zoom);
 
+    this._map.setView(cityCoordinate, zoom);
 
     leaflet
       .tileLayer(
           `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`,
           {
-            attribution:
-            `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`,
+            attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`,
           }
-      ).addTo(map);
+      )
+      .addTo(this._map);
 
-
-    allOffers.forEach((place) => {
-      leaflet.marker([place.location.latitude, place.location.longitude], {icon}).addTo(map);
+    offersByCity.forEach((place) => {
+      leaflet
+        .marker([place.location.latitude, place.location.longitude], {
+          icon,
+        })
+        .addTo(this._map);
     });
   }
 
@@ -83,25 +75,9 @@ export default class CityMap extends PureComponent {
 }
 
 CityMap.propTypes = {
-  city: PropTypes.string.isRequired,
-  offers: PropTypes.arrayOf(
+  offersByCity: PropTypes.arrayOf(
       PropTypes.shape({
-        features: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         bedrooms: PropTypes.number.isRequired,
-        descriptionOffer: PropTypes.arrayOf(PropTypes.string.isRequired)
-      .isRequired,
-        hostName: PropTypes.string.isRequired,
-        isHostPro: PropTypes.bool.isRequired,
-        srcHostAvatar: PropTypes.string.isRequired,
-        id: PropTypes.number.isRequired,
-        isInBookmark: PropTypes.bool.isRequired,
-        isPremium: PropTypes.bool.isRequired,
-        maxAdults: PropTypes.number.isRequired,
-        price: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        srcImageOffer: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-        title: PropTypes.string.isRequired,
-        type: PropTypes.oneOf(PLACE_TYPES).isRequired,
         city: PropTypes.shape({
           location: PropTypes.shape({
             latitude: PropTypes.number.isRequired,
@@ -110,11 +86,36 @@ CityMap.propTypes = {
           }),
           name: PropTypes.string.isRequired,
         }),
+        description: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        goods: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        id: PropTypes.number.isRequired,
+        images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        isInBookmark: PropTypes.bool.isRequired,
+        isPremium: PropTypes.bool.isRequired,
         location: PropTypes.shape({
           latitude: PropTypes.number.isRequired,
           longitude: PropTypes.number.isRequired,
           zoom: PropTypes.number.isRequired,
         }),
+        maxAdults: PropTypes.number.isRequired,
+        price: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              comment: PropTypes.string.isRequired,
+              date: PropTypes.string.isRequired,
+              id: PropTypes.number.isRequired,
+              rating: PropTypes.number.isRequired,
+              user: PropTypes.shape({
+                avatarUrl: PropTypes.string.isRequired,
+                id: PropTypes.number.isRequired,
+                isPro: PropTypes.bool.isRequired,
+                name: PropTypes.string.isRequired,
+              }).isRequired,
+            })
+        ).isRequired,
+        title: PropTypes.string.isRequired,
+        type: PropTypes.oneOf(OFFER_TYPES).isRequired,
       })
   ).isRequired,
   className: PropTypes.oneOf(Object.values(MapClassName)).isRequired,

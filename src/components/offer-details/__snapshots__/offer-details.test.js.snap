@@ -295,7 +295,7 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
               <span
                 className="property__user-name"
               >
-                George
+                Angelina
               </span>
             </div>
             <div
@@ -305,15 +305,15 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                 className="property__text"
               >
                 A quiet cozy and picturesque that hides behind a a river by
-      the unique lightness of Amsterdam. The building is green and
-      from 18th century.
+              the unique lightness of Amsterdam. The building is green and
+              from 18th century.
               </p>
               <p
                 className="property__text"
               >
                 An independent House, strategically located between Rembrand
-      Square and National Opera, but where the bustle of the city
-      comes to rest in this alley flowery and colorful.
+              Square and National Opera, but where the bustle of the city
+              comes to rest in this alley flowery and colorful.
               </p>
             </div>
           </div>
@@ -327,71 +327,12 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
               <span
                 className="reviews__amount"
               >
-                3
+                1
               </span>
             </h2>
             <ul
               className="reviews__list"
             >
-              <li
-                className="reviews__item"
-              >
-                <div
-                  className="reviews__user user"
-                >
-                  <div
-                    className="reviews__avatar-wrapper user__avatar-wrapper"
-                  >
-                    <img
-                      alt="Reviews avatar"
-                      className="reviews__avatar user__avatar"
-                      height="54"
-                      src="img/avatar-max.jpg"
-                      width="54"
-                    />
-                  </div>
-                  <span
-                    className="reviews__user-name"
-                  >
-                    Keks
-                  </span>
-                </div>
-                <div
-                  className="reviews__info"
-                >
-                  <div
-                    className="reviews__rating rating"
-                  >
-                    <div
-                      className="reviews__stars rating__stars"
-                    >
-                      <span
-                        style={
-                          Object {
-                            "width": "80%",
-                          }
-                        }
-                      />
-                      <span
-                        className="visually-hidden"
-                      >
-                        Rating
-                      </span>
-                    </div>
-                  </div>
-                  <p
-                    className="reviews__text"
-                  >
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-                  </p>
-                  <time
-                    className="reviews__time"
-                    dateTime="2020-04-10"
-                  >
-                    April 2020
-                  </time>
-                </div>
-              </li>
               <li
                 className="reviews__item"
               >
@@ -427,7 +368,7 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                       <span
                         style={
                           Object {
-                            "width": "20%",
+                            "width": "80%",
                           }
                         }
                       />
@@ -441,72 +382,13 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                   <p
                     className="reviews__text"
                   >
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
+                    One A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
                   </p>
                   <time
                     className="reviews__time"
-                    dateTime="2020-02-26"
+                    dateTime="2019-06-08"
                   >
-                    February 2020
-                  </time>
-                </div>
-              </li>
-              <li
-                className="reviews__item"
-              >
-                <div
-                  className="reviews__user user"
-                >
-                  <div
-                    className="reviews__avatar-wrapper user__avatar-wrapper"
-                  >
-                    <img
-                      alt="Reviews avatar"
-                      className="reviews__avatar user__avatar"
-                      height="54"
-                      src="img/avatar-max.jpg"
-                      width="54"
-                    />
-                  </div>
-                  <span
-                    className="reviews__user-name"
-                  >
-                    Vova
-                  </span>
-                </div>
-                <div
-                  className="reviews__info"
-                >
-                  <div
-                    className="reviews__rating rating"
-                  >
-                    <div
-                      className="reviews__stars rating__stars"
-                    >
-                      <span
-                        style={
-                          Object {
-                            "width": "100%",
-                          }
-                        }
-                      />
-                      <span
-                        className="visually-hidden"
-                      >
-                        Rating
-                      </span>
-                    </div>
-                  </div>
-                  <p
-                    className="reviews__text"
-                  >
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-                  </p>
-                  <time
-                    className="reviews__time"
-                    dateTime="2019-08-01"
-                  >
-                    August 2019
+                    June 2019
                   </time>
                 </div>
               </li>
@@ -712,7 +594,7 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                   alt="Place image"
                   className="place-card__image"
                   height="200"
-                  src="http://picsum.photos/260/200?r=4"
+                  src="http://picsum.photos/260/200?r=1"
                   width="260"
                 />
               </a>
@@ -810,7 +692,7 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                   alt="Place image"
                   className="place-card__image"
                   height="200"
-                  src="http://picsum.photos/260/200?r=1"
+                  src="http://picsum.photos/260/200?r=2"
                   width="260"
                 />
               </a>
@@ -908,7 +790,7 @@ exports[`Testing <OfferDetails/> OfferDetails rendered correctly 1`] = `
                   alt="Place image"
                   className="place-card__image"
                   height="200"
-                  src="http://picsum.photos/260/200?r=2"
+                  src="http://picsum.photos/260/200?r=3"
                   width="260"
                 />
               </a>

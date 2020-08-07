@@ -2,12 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import {getRatingInStars, formatCommentDateFull, formatCommentDateShort} from "../../utils/common.js";
 
-const ReviewsItem = (props) => {
-  const {review} = props;
-  const {comment, date, rating, userAvatar, userName} = review;
+const ReviewsItem = ({review}) => {
+  const {comment, date, rating, user} = review;
 
   const ratingStars = getRatingInStars(rating);
-
   const shortDate = formatCommentDateShort(date);
   const fullDate = formatCommentDateFull(date);
 
@@ -17,13 +15,13 @@ const ReviewsItem = (props) => {
         <div className="reviews__avatar-wrapper user__avatar-wrapper">
           <img
             className="reviews__avatar user__avatar"
-            src={userAvatar}
+            src={user.avatarUrl}
             width="54"
             height="54"
             alt="Reviews avatar"
           />
         </div>
-        <span className="reviews__user-name">{userName}</span>
+        <span className="reviews__user-name">{user.name}</span>
       </div>
       <div className="reviews__info">
         <div className="reviews__rating rating">
@@ -44,11 +42,15 @@ const ReviewsItem = (props) => {
 ReviewsItem.propTypes = {
   review: PropTypes.shape({
     comment: PropTypes.string.isRequired,
-    date: PropTypes.object.isRequired,
+    date: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
-    userAvatar: PropTypes.string.isRequired,
-    userName: PropTypes.string.isRequired,
+    user: PropTypes.shape({
+      avatarUrl: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      isPro: PropTypes.bool.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
 };
 
