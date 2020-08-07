@@ -4,7 +4,7 @@ import {OFFER_TYPES, OfferClassName} from "../../const.js";
 import {getRatingInStars, foramtToCapitalize} from "../../utils/common.js";
 
 const OfferCard = (props) => {
-  const {className, offer, onOfferTitleClick} = props;
+  const {className, offer, onOfferTitleClick, onOfferCardHover} = props;
   const {
     id,
     isInBookmark,
@@ -25,7 +25,15 @@ const OfferCard = (props) => {
   const typeCapitalize = foramtToCapitalize(type);
 
   return (
-    <article className={`${className} place-card`}>
+    <article
+      className={`${className} place-card`}
+      onMouseEnter={() => {
+        onOfferCardHover(offer.id);
+      }}
+      onMouseLeave={() => {
+        onOfferCardHover(false);
+      }}
+    >
       {isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>
@@ -93,6 +101,7 @@ OfferCard.propTypes = {
     type: PropTypes.oneOf(OFFER_TYPES).isRequired,
   }).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
+  onOfferCardHover: PropTypes.func.isRequired,
   className: PropTypes.oneOf(
       Object.values(OfferClassName).map((name) => name[1])
   ).isRequired,

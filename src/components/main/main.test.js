@@ -5,6 +5,7 @@ import {offers} from "../../mocks/offers.js";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {cities} from "../../mocks/cities.js";
+import {SORTING_ITEMS} from "../../const.js";
 
 const mockStore = configureStore([]);
 
@@ -13,6 +14,8 @@ describe(`Testing <Main/>`, () => {
     const store = mockStore({
       cities,
       activeCity: cities[0],
+      sortingType: SORTING_ITEMS[0],
+      hoverCityId: false,
     });
     const tree = renderer
       .create(

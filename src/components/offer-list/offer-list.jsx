@@ -1,21 +1,55 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import OfferCard from "../offer-card/offer-card.jsx";
-import {OFFER_TYPES, OfferClassName} from "../../const.js";
+import {
+  OFFER_TYPES,
+  OfferClassName,
+  SORTING_ITEMS,
+  SortingType,
+} from "../../const.js";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer.js";
-
 class OfferList extends PureComponent {
+  _sortOffersByType(offers, sortType) {
+    let sortedOffers = offers.slice();
+    switch (sortType) {
+      case SORTING_ITEMS[1]:
+        return sortedOffers.sort(
+            (a, b) => a[SortingType.PRICE] - b[SortingType.PRICE]
+        );
+      case SORTING_ITEMS[2]:
+        return sortedOffers.sort(
+            (a, b) => b[SortingType.PRICE] - a[SortingType.PRICE]
+        );
+      case SORTING_ITEMS[3]:
+        return sortedOffers.sort(
+            (a, b) => b[SortingType.RATING] - a[SortingType.RATING]
+        );
+      default:
+        return offers;
+    }
+  }
+
   render() {
-    const {offersByCity, className, onOfferTitleClick} = this.props;
+    const {
+      className,
+      offersByCity,
+      onOfferTitleClick,
+      sortingType,
+      onOfferCardHover,
+    } = this.props;
+
+    const sortedOffers = this._sortOffersByType(offersByCity, sortingType);
+
     return (
       <div className={`${className[0]} places__list tabs__content`}>
-        {offersByCity.map((offer) => (
+        {sortedOffers.map((offer) => (
           <OfferCard
             key={offer.id}
             offer={offer}
             className={className[1]}
             onOfferTitleClick={onOfferTitleClick}
+            onOfferCardHover={onOfferCardHover}
           />
         ))}
       </div>
@@ -56,13 +90,22 @@ OfferList.propTypes = {
       })
   ).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
+  onOfferCardHover: PropTypes.func.isRequired,
+  sortingType: PropTypes.oneOf(SORTING_ITEMS).isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  sortingType: state.sortingType,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onOfferTitleClick(offer) {
     dispatch(ActionCreator.selectActiveOffer(offer));
   },
+  onOfferCardHover(offerDataId) {
+    dispatch(ActionCreator.selectHoverCityId(offerDataId));
+  },
 });
 
 export {OfferList};
-export default connect(null, mapDispatchToProps)(OfferList);
+export default connect(mapStateToProps, mapDispatchToProps)(OfferList);

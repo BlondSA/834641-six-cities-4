@@ -5,6 +5,7 @@ import {offers} from "../../mocks/offers.js";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {cities} from "../../mocks/cities.js";
+import {SORTING_ITEMS} from "../../const.js";
 
 const mockStore = configureStore([]);
 
@@ -15,6 +16,8 @@ describe(`Testing <App/>`, () => {
       offersByCity: offers.slice(0, 3),
       activeOffer: false,
       cities,
+      sortingType: SORTING_ITEMS[0],
+      hoverCityId: false,
     });
     const tree = renderer
       .create(
@@ -36,6 +39,8 @@ describe(`Testing <App/>`, () => {
       offersByCity: offers.slice(0, 3),
       activeOffer: offers[0],
       cities,
+      sortingType: SORTING_ITEMS[0],
+      hoverCityId: false,
     });
     const tree = renderer
       .create(

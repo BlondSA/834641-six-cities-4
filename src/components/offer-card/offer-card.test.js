@@ -12,6 +12,7 @@ describe(`Testing <OfferCard/>`, () => {
             offer={offers[0]}
             onOfferTitleClick={() => {}}
             className={OfferClassName.MAIN[1]}
+            onOfferCardHover={() => {}}
           />
       )
       .toJSON();
