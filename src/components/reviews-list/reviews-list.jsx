@@ -4,7 +4,8 @@ import ReviewsItem from '../review-item/reviews-item.jsx';
 import {getSortedReviews} from "../../utils/common.js";
 import {MIN_REVIEW, MAX_REVIEW} from "../../const.js";
 
-const ReviewsList = ({reviews}) =>{
+const ReviewsList = (props) =>{
+  const {reviews} = props;
   const reviewsCount = reviews.length;
   const sortedReviews = getSortedReviews(reviews).splice(MIN_REVIEW, MAX_REVIEW);
 

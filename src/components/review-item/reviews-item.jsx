@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import {getRatingInStars, formatCommentDateFull, formatCommentDateShort} from "../../utils/common.js";
 
-const ReviewsItem = ({review}) => {
+const ReviewsItem = (props) => {
+  const {review} = props;
   const {comment, date, rating, user} = review;
 
   const ratingStars = getRatingInStars(rating);

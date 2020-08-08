@@ -2,67 +2,91 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import leaflet from "leaflet";
 import {OFFER_TYPES, MapClassName} from "../../const.js";
+import {connect} from 'react-redux';
 
-export default class CityMap extends PureComponent {
+class CityMap extends PureComponent {
   constructor(props) {
     super(props);
 
     this._divRef = React.createRef();
+    this._mapContainer = null;
+    this._map = null;
+    this._markersLayerGroup = null;
   }
 
   componentDidMount() {
-    this._getMap();
+    this._mapContainer = this._divRef.current;
+    this._setMap();
+    this._setMapView();
+    this._setMapMarkers();
   }
 
   componentWillUnmount() {
-    const mapContainer = this._divRef.current;
-    mapContainer.remove();
+    this._mapContainer.remove();
   }
 
   componentDidUpdate() {
-    this._map.remove();
-    this._getMap();
+    this._setMapView();
+    this._markersLayerGroup.clearLayers();
+    this._setMapMarkers();
+    this._changeMarkerIcon();
   }
 
-  _getMap() {
-    const {offersByCity} = this.props;
-    const mapContainer = this._divRef.current;
-    const zoom = offersByCity[0].city.location.zoom;
-
-    const cityCoordinate = [
-      offersByCity[0].city.location.latitude,
-      offersByCity[0].city.location.longitude,
-    ];
-
-    const icon = leaflet.icon({
-      iconUrl: `img/pin.svg`,
-      iconSize: [30, 40],
-    });
-
-    this._map = leaflet.map(mapContainer, {
-      center: cityCoordinate,
-      zoom,
+  _setMap() {
+    this._map = leaflet.map(this._mapContainer, {
       zoomControl: false,
       marker: false,
     });
-
-    this._map.setView(cityCoordinate, zoom);
 
     leaflet
       .tileLayer(
           `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`,
           {
-            attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`,
+            attribution:
+            `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`,
           }
       )
       .addTo(this._map);
 
-    offersByCity.forEach((place) => {
-      leaflet
-        .marker([place.location.latitude, place.location.longitude], {
-          icon,
-        })
-        .addTo(this._map);
+    this._markersLayerGroup = leaflet.layerGroup().addTo(this._map);
+  }
+
+  _setMapView() {
+    const zoom = this.props.offersByCity[0].city.location.zoom;
+    const cityCoordinate = [
+      this.props.offersByCity[0].city.location.latitude,
+      this.props.offersByCity[0].city.location.longitude,
+    ];
+    this._map.setView(cityCoordinate, zoom);
+  }
+
+  _setMapMarkers() {
+    const icon = leaflet.icon({
+      iconUrl: `img/pin.svg`,
+      iconSize: [30, 40],
+    });
+    this.props.offersByCity.forEach((place) => {
+      const marker = leaflet.marker(
+          [place.location.latitude, place.location.longitude],
+          {
+            icon,
+          }
+      );
+      marker.id = place.id;
+      marker.addTo(this._markersLayerGroup);
+    });
+  }
+
+  _changeMarkerIcon() {
+    const {hoverCityId} = this.props;
+    this._markersLayerGroup.getLayers().forEach((marker) => {
+      if (marker.id === hoverCityId) {
+        const newIcon = leaflet.icon({
+          iconUrl: `img/pin-active.svg`,
+          iconSize: [30, 40],
+        });
+        marker.setIcon(newIcon);
+      }
     });
   }
 
@@ -119,4 +143,14 @@ CityMap.propTypes = {
       })
   ).isRequired,
   className: PropTypes.oneOf(Object.values(MapClassName)).isRequired,
+  hoverCityId: PropTypes.oneOfType([PropTypes.bool, PropTypes.number])
+.isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  hoverCityId: state.hoverCityId,
+});
+
+export {CityMap};
+export default connect(mapStateToProps)(CityMap);
+

@@ -9,15 +9,18 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-describe(`OfferCardE2eTest`, () => {
+describe(`<OfferCard /> e2e test`, () => {
   it(`Should offer card title be pressed`, () => {
     const onOfferTitleClick = jest.fn();
+    const onOfferCardHover = jest.fn();
 
     const offerCard = shallow(
         <OfferCard
           offer={offers[0]}
           onOfferTitleClick={onOfferTitleClick}
+          onOfferCardHover={onOfferCardHover}
           className={OfferClassName.MAIN[1]}
+          hoverCityId={1}
         />
     );
 

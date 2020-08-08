@@ -1,6 +1,7 @@
-import {reducer, ActionCreator, ActionType} from "./reducer.js";
+import {reducer, ActionCreator, ActionType} from "./reducer";
 import {offers} from "./mocks/offers.js";
 import {getCityList, filterOffersByCity} from "./utils/common.js";
+import {SORTING_ITEMS} from "./const.js";
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
@@ -9,6 +10,8 @@ it(`Reducer without additional parameters should return initial state`, () => {
     offersByCity: filterOffersByCity(offers, offers[0].city.name),
     activeOffer: false,
     activeCity: offers[0].city.name,
+    sortingType: SORTING_ITEMS[0],
+    hoverCityId: false,
   });
 });
 
@@ -24,6 +27,20 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.selectActiveOffer(offers[0])).toEqual({
       type: ActionType.SELECT_OFFERS,
       payload: offers[0],
+    });
+  });
+
+  it(`Action creator for selectSortingType`, function () {
+    expect(ActionCreator.selectSortingType(SORTING_ITEMS[0])).toEqual({
+      type: ActionType.SELECT_SORTING_TYPE,
+      payload: SORTING_ITEMS[0],
+    });
+  });
+
+  it(`Action creator for changeHoverCityId`, function () {
+    expect(ActionCreator.selectHoverCityId(1)).toEqual({
+      type: ActionType.SELECT_HOVER_CITY_ID,
+      payload: 1,
     });
   });
 });

@@ -23,6 +23,18 @@ const OfferClassName = {
   PROPERTY: [`near-places__list`, `near-places__card`],
 };
 
+const SORTING_ITEMS = [
+  `Popular`,
+  `Price: low to high`,
+  `Price: high to low`,
+  `Top rated first`,
+];
+
+const SortingType = {
+  PRICE: `price`,
+  RATING: `rating`,
+};
+
 export {
   City,
   MapClassName,
@@ -31,4 +43,6 @@ export {
   MIN_REVIEW,
   OFFER_TYPES,
   OfferClassName,
+  SORTING_ITEMS,
+  SortingType,
 };
