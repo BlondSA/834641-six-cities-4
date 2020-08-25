@@ -5,11 +5,13 @@ import {OFFER_TYPES, MapClassName, OfferClassName} from "../../const.js";
 import CityMap from "../city-map/city-map.jsx";
 import CityList from "../city-list/city-list.jsx";
 import OffersSorting from "../offers-sorting/offers-sorting.jsx";
+import withOffersSorting from "../../hocs/with-offers-sorting/with-offers-sorting.jsx";
 
 const Main = (props) => {
   const {activeCity, offersByCity} = props;
 
   const offersCount = offersByCity.length;
+  const OffersSortingWrapped = withOffersSorting(OffersSorting);
 
   return (
     <div className="page page--gray page--main">
@@ -59,7 +61,7 @@ const Main = (props) => {
                 {offersCount} place{offersCount <= 1 ? `` : `s`} to stay in{` `}
                 {activeCity}
               </b>
-              <OffersSorting />
+              <OffersSortingWrapped />
               <OfferList
                 offersByCity={offersByCity}
                 className={OfferClassName.MAIN}

@@ -8,7 +8,9 @@ describe(`<OffersSorting/> snapchots test`, () => {
     const tree = renderer
       .create(
           <OffersSorting
+            isOpen={false}
             sortingType={SORTING_ITEMS[0]}
+            onSortingClick={() => {}}
             onSortingItemClick={() => {}}
           />
       )

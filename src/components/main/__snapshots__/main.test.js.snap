@@ -196,7 +196,6 @@ exports[`Testing <Main/> Main have rendered correctly 1`] = `
             </span>
             <span
               className="places__sorting-type"
-              onClick={[Function]}
               tabIndex="0"
             >
               Popular
